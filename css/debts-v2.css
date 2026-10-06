@@ -1,0 +1,223 @@
+/* =====================================================
+   FELIOS ECONOMY — DEUDAS v2
+===================================================== */
+
+.debt-section{position:relative}
+.debt-overview-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.debt-panel{position:relative;min-width:0;border:1px solid var(--felios-border);border-radius:22px;background:var(--felios-card);box-shadow:0 14px 32px rgba(0,0,0,.08);overflow:hidden}
+.debt-panel:before{content:"";position:absolute;inset:0 auto 0 0;width:4px;background:var(--debt-accent)}
+.debt-panel-debt{--debt-accent:var(--danger)}
+.debt-panel-credit{--debt-accent:var(--success)}
+.debt-panel-head{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;padding:18px 18px 12px 22px}
+.debt-panel-head small{display:block;margin-bottom:4px;color:var(--debt-accent);font-size:9px;font-weight:900;letter-spacing:1.25px}
+.debt-panel-head h5{display:flex;align-items:center;gap:8px;margin:0;color:var(--felios-text);font-size:16px;font-weight:850}
+.debt-panel-head p{margin:5px 0 0;color:var(--felios-text-soft);font-size:10px}
+.debt-panel-symbol{width:23px;height:23px;display:inline-flex;align-items:center;justify-content:center;border-radius:50%;background:color-mix(in srgb,var(--debt-accent) 13%,var(--felios-card));color:var(--debt-accent);font-size:14px}
+.debt-add-button{width:34px;height:34px;flex:0 0 34px;border:1px solid color-mix(in srgb,var(--debt-accent) 42%,var(--felios-border));border-radius:50%;background:color-mix(in srgb,var(--debt-accent) 10%,var(--felios-card));color:var(--debt-accent);font-size:19px;line-height:1;cursor:pointer;transition:.18s ease}
+.debt-add-button:hover{transform:translateY(-1px) scale(1.04);background:var(--debt-accent);color:#fff;box-shadow:0 7px 18px color-mix(in srgb,var(--debt-accent) 26%,transparent)}
+.debt-panel-total{display:flex;align-items:end;justify-content:space-between;gap:14px;margin:0 18px 12px 22px;padding:11px 13px;border:1px solid var(--felios-border);border-radius:14px;background:var(--felios-panel)}
+.debt-panel-total span{font-size:10px;color:var(--felios-text-soft)}
+.debt-panel-total strong{color:var(--debt-accent);font-size:18px;font-weight:900}
+.debt-groups{max-height:430px;overflow:auto;padding:0 12px 12px 16px;scrollbar-width:thin;scrollbar-color:var(--felios-primary) transparent}
+
+/* Personas / entidades */
+.debt-person-card{margin-top:8px;border:1px solid var(--felios-border);border-radius:15px;background:color-mix(in srgb,var(--felios-panel) 70%,var(--felios-card));overflow:hidden;transition:border-color .18s ease,box-shadow .18s ease}
+.debt-person-card.open{border-color:color-mix(in srgb,var(--debt-accent) 45%,var(--felios-border));box-shadow:0 8px 24px rgba(0,0,0,.06)}
+.debt-person-toggle{width:100%;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:11px 12px;border:0;background:transparent;color:var(--felios-text);text-align:left;cursor:pointer}
+.debt-person-left,.debt-person-right{display:flex;align-items:center;gap:9px;min-width:0}
+.debt-person-avatar{width:34px;height:34px;display:flex;align-items:center;justify-content:center;flex:0 0 34px;border-radius:11px;background:color-mix(in srgb,var(--debt-accent) 12%,var(--felios-card))}
+.debt-person-left>div{min-width:0}.debt-person-left strong{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:12px}.debt-person-left small{display:block;margin-top:2px;color:var(--felios-text-soft);font-size:9px}
+.debt-person-right{margin-left:auto}.debt-person-right>strong{white-space:nowrap;font-size:12px}.debt-chevron{font-size:15px;color:var(--felios-text-soft);transition:transform .2s ease}.debt-person-card.open .debt-chevron{transform:rotate(180deg)}
+.debt-person-accordion{display:grid;grid-template-rows:0fr;opacity:0;transition:grid-template-rows .22s ease,opacity .16s ease}.debt-person-card.open .debt-person-accordion{grid-template-rows:1fr;opacity:1}.debt-person-accordion-inner{min-height:0;overflow:hidden;border-top:1px solid transparent}.debt-person-card.open .debt-person-accordion-inner{border-top-color:var(--felios-border);padding:8px}
+.debt-entry-list{display:flex;flex-direction:column;gap:7px}
+.debt-add-to-person{width:100%;margin-top:8px;padding:8px 10px;border:1px dashed var(--felios-border);border-radius:10px;background:transparent;color:var(--felios-primary);font-size:10px;font-weight:800;cursor:pointer}.debt-add-to-person:hover{background:var(--felios-card);border-color:var(--felios-primary)}
+
+/* Conceptos */
+.debt-entry-row{position:relative;padding:11px;border:1px solid var(--felios-border);border-radius:13px;background:var(--felios-card)}
+.debt-entry-top{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}.debt-entry-main{display:flex;align-items:center;gap:9px;min-width:0}.debt-entry-icon{width:32px;height:32px;display:flex;align-items:center;justify-content:center;flex:0 0 32px;border-radius:10px;background:color-mix(in srgb,var(--felios-primary) 10%,var(--felios-panel))}.debt-entry-copy{min-width:0}.debt-entry-copy strong{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:11px}.debt-entry-copy small{display:block;margin-top:2px;color:var(--felios-text-soft);font-size:8.5px}
+.debt-entry-amount{text-align:right;white-space:nowrap}.debt-entry-amount span{display:block;color:var(--felios-text-soft);font-size:8px}.debt-entry-amount strong{display:block;margin-top:1px;font-size:12px}
+.debt-entry-note{margin:7px 0 0;padding:7px 8px;border-radius:9px;background:var(--felios-panel);color:var(--felios-text-soft);font-size:9px;line-height:1.35;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.debt-entry-meta{display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin-top:7px;color:var(--felios-text-soft);font-size:8.5px}.debt-due{padding:3px 6px;border-radius:999px}.debt-due.normal{background:var(--felios-panel)}.debt-due.soon{background:color-mix(in srgb,var(--felios-primary) 15%,var(--felios-card));color:var(--felios-primary)}.debt-due.overdue{background:color-mix(in srgb,var(--danger) 14%,var(--felios-card));color:var(--danger)}
+.debt-progress{height:5px;margin-top:8px;border-radius:999px;overflow:hidden;background:color-mix(in srgb,var(--felios-text-soft) 12%,var(--felios-card))}.debt-progress>div{height:100%;border-radius:999px;background:var(--debt-accent);transition:width .25s ease}
+.debt-entry-actions{display:flex;align-items:center;gap:7px;margin-top:9px}.debt-payment-btn{flex:1;padding:8px 10px;border:0;border-radius:10px;background:var(--debt-accent);color:#fff;font-size:10px;font-weight:850;cursor:pointer;transition:.16s ease}.debt-payment-btn:hover{transform:translateY(-1px);filter:brightness(1.05)}
+.debt-entry-menu-wrap{position:relative}.debt-entry-menu-btn{width:32px;height:32px;border:1px solid var(--felios-border);border-radius:10px;background:var(--felios-panel);color:var(--felios-text-soft);font-size:17px;cursor:pointer}.debt-entry-menu-popover{position:absolute;right:0;bottom:38px;z-index:60;width:175px;padding:5px;border:1px solid var(--felios-border);border-radius:12px;background:var(--felios-card);box-shadow:0 16px 34px rgba(0,0,0,.2);opacity:0;transform:translateY(5px) scale(.97);pointer-events:none;transition:.15s ease}.debt-entry-menu-popover.show{opacity:1;transform:none;pointer-events:auto}.debt-entry-menu-popover button{width:100%;padding:8px 9px;border:0;border-radius:8px;background:transparent;color:var(--felios-text);font-size:9.5px;text-align:left;cursor:pointer}.debt-entry-menu-popover button:hover{background:var(--felios-panel)}.debt-entry-menu-popover .danger:hover{color:var(--danger)}
+
+/* Vacíos */
+.debt-empty-state{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:140px;padding:22px;text-align:center}.debt-empty-state>span{font-size:24px}.debt-empty-state strong{margin-top:6px;font-size:12px}.debt-empty-state small{max-width:300px;margin-top:4px;color:var(--felios-text-soft);font-size:9px;line-height:1.4}
+
+/* Modales */
+body.debt-modal-open{overflow:hidden}.debt-modal-body textarea{width:100%;margin-top:5px;padding:10px 11px;resize:vertical;min-height:74px;border:1px solid var(--felios-border);border-radius:11px;background:var(--felios-panel);color:var(--felios-text);outline:none}.debt-modal-body textarea:focus{border-color:var(--felios-primary);box-shadow:0 0 0 3px var(--felios-glow)}
+.debt-modal-help{margin:-2px 0 14px;color:var(--felios-text-soft);font-size:10px;line-height:1.45}.debt-form-grid{display:grid;gap:10px}.debt-form-grid.two{grid-template-columns:1fr 1fr}.debt-person-grid{grid-template-columns:1fr 90px}.debt-due-toggle{display:flex!important;align-items:center;gap:8px;padding:9px 10px;border:1px solid var(--felios-border);border-radius:11px;background:var(--felios-panel);cursor:pointer}.debt-due-toggle input{width:auto!important;margin:0!important}.debt-due-toggle span{font-size:10px;color:var(--felios-text)}.is-hidden{display:none!important}.debt-char-count{float:right;color:var(--felios-text-soft);font-size:9px}.debt-technical-date{margin:7px 0 4px;padding:8px 10px;border-radius:10px;background:var(--felios-panel);color:var(--felios-text-soft);font-size:9px}
+.debt-payment-summary{margin-bottom:14px;padding:13px;border:1px solid var(--felios-border);border-radius:14px;background:var(--felios-panel)}.debt-payment-summary>div{display:flex;align-items:center;justify-content:space-between;gap:10px}.debt-payment-summary span{font-size:10px}.debt-payment-summary strong{font-size:18px}.debt-payment-summary small{display:block;margin-top:4px;color:var(--felios-text-soft);font-size:9px}.debt-payment-quick{display:flex;justify-content:flex-end}.debt-payment-quick button{padding:6px 8px;border:0;background:transparent;color:var(--felios-primary);font-size:9px;font-weight:800;cursor:pointer}
+.debt-payment-history-summary{display:grid;grid-template-columns:1fr auto;gap:6px 15px;padding:12px;border-radius:13px;background:var(--felios-panel);font-size:10px}.debt-payment-history-summary span{color:var(--felios-text-soft)}.debt-payment-history-list{display:flex;flex-direction:column;gap:8px;margin-top:12px}.debt-payment-history-row{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px;border:1px solid var(--felios-border);border-radius:12px}.debt-payment-history-row strong{display:block;font-size:11px}.debt-payment-history-row small{display:block;margin-top:2px;color:var(--felios-text-soft);font-size:9px}.debt-payment-date-edit{padding:6px 8px;border:1px solid var(--felios-border);border-radius:9px;background:var(--felios-panel);color:var(--felios-text);font-size:9px;cursor:pointer}.debt-empty-mini{padding:18px;text-align:center;color:var(--felios-text-soft);font-size:10px}
+
+@media(max-width:860px){.debt-overview-grid{grid-template-columns:1fr}.debt-groups{max-height:none}}
+@media(max-width:600px){.debt-panel{border-radius:18px}.debt-panel-head{padding:15px 14px 10px 18px}.debt-panel-total{margin:0 12px 10px 16px}.debt-groups{padding:0 9px 10px 13px}.debt-form-grid.two,.debt-person-grid{grid-template-columns:1fr}.debt-entry-top{align-items:center}.debt-entry-copy small{white-space:normal}.debt-entry-menu-popover{position:fixed;left:12px;right:12px;bottom:12px;width:auto}.debt-person-right>strong{font-size:11px}}
+
+/* =====================================================
+   DEUDAS v2.1 — PULIDO PERSONAS / ACORDEONES
+===================================================== */
+
+/* Apertura suave sin re-render brusco */
+.debt-person-accordion{
+    display:grid;
+    grid-template-rows:0fr;
+    opacity:0;
+    transform:translateY(-5px);
+    transition:
+        grid-template-rows .32s cubic-bezier(.2,.72,.2,1),
+        opacity .22s ease,
+        transform .32s cubic-bezier(.2,.72,.2,1);
+}
+
+.debt-person-card.open .debt-person-accordion{
+    grid-template-rows:1fr;
+    opacity:1;
+    transform:translateY(0);
+}
+
+.debt-person-accordion-inner{
+    min-height:0;
+    overflow:hidden;
+    padding:0 8px;
+    border-top:1px solid transparent;
+    transition:
+        padding .28s ease,
+        border-color .28s ease;
+}
+
+.debt-person-card.open .debt-person-accordion-inner{
+    padding:8px;
+    border-top-color:var(--felios-border);
+}
+
+/* Acciones de persona separadas de los movimientos */
+.debt-person-toolbar{
+    display:flex;
+    justify-content:flex-end;
+    gap:6px;
+    margin-bottom:7px;
+}
+
+.debt-person-toolbar button{
+    padding:6px 9px;
+    border:1px solid var(--felios-border);
+    border-radius:9px;
+    background:transparent;
+    color:var(--felios-text-soft);
+    font-size:9px;
+    font-weight:750;
+    cursor:pointer;
+    transition:.16s ease;
+}
+
+.debt-person-toolbar button:hover{
+    background:var(--felios-panel);
+    color:var(--felios-text);
+    border-color:color-mix(in srgb,var(--felios-primary) 35%,var(--felios-border));
+}
+
+.debt-delete-person:hover{
+    color:var(--danger)!important;
+    border-color:color-mix(in srgb,var(--danger) 40%,var(--felios-border))!important;
+}
+
+.debt-person-empty{
+    margin:3px 0 8px;
+    padding:9px 10px;
+    border:1px dashed var(--felios-border);
+    border-radius:10px;
+    background:color-mix(in srgb,var(--felios-panel) 65%,transparent);
+    color:var(--felios-text-soft);
+    font-size:9px;
+    line-height:1.4;
+}
+
+/* Persona bloqueada al añadir/editar un movimiento ya agrupado */
+.debt-locked-input-wrap{
+    position:relative;
+}
+
+.debt-locked-input-wrap input[readonly]{
+    opacity:.52;
+    cursor:not-allowed;
+    background:color-mix(in srgb,var(--felios-panel) 88%,var(--felios-card))!important;
+    color:var(--felios-text-soft)!important;
+}
+
+/* Notas realmente cortas y estables en la tarjeta */
+.debt-entry-note{
+    white-space:normal;
+    display:-webkit-box;
+    -webkit-box-orient:vertical;
+    -webkit-line-clamp:2;
+    line-clamp:2;
+    overflow:hidden;
+    max-width:100%;
+}
+
+/* Decisión al quedarse una persona sin movimientos */
+.debt-empty-person-choice{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+    padding:8px 8px 2px;
+}
+
+.debt-empty-person-choice>span{
+    width:52px;
+    height:52px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:16px;
+    background:var(--felios-panel);
+    font-size:25px;
+}
+
+.debt-empty-person-choice h4{
+    margin:10px 0 4px;
+    color:var(--felios-text);
+}
+
+.debt-empty-person-choice p{
+    max-width:430px;
+    margin:0;
+    color:var(--felios-text-soft);
+    font-size:10px;
+    line-height:1.5;
+}
+
+.debt-empty-person-actions{
+    margin-top:18px;
+}
+
+.debt-empty-person-actions .debt-remove-person{
+    background:var(--danger);
+}
+
+@media(max-width:600px){
+    .debt-person-toolbar{
+        justify-content:stretch;
+    }
+    .debt-person-toolbar button{
+        flex:1;
+    }
+}
+
+/* v3.1 — notas cortas y campos bloqueados discretos */
+.debt-entry-note{
+    display:block;
+    max-width:100%;
+    margin:7px 0 0;
+    padding:6px 8px;
+    border-radius:9px;
+    background:color-mix(in srgb,var(--felios-primary) 5%,var(--felios-panel));
+    color:var(--felios-text-soft);
+    font-size:9px;
+    line-height:1.35;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}

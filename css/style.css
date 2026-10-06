@@ -1,0 +1,1479 @@
+/* =====================================================
+   FELIOS ECONOMY
+   STYLE BASE
+   Sistema principal de interfaz
+===================================================== */
+
+
+/* =====================================================
+   VARIABLES GENERALES
+===================================================== */
+
+:root {
+
+    --transition: .25s ease;
+
+    --radius-sm: 10px;
+    --radius-md: 16px;
+    --radius-lg: 22px;
+
+    --max-width: 1400px;
+
+}
+
+
+/* =====================================================
+   RESET
+===================================================== */
+
+*,
+*::before,
+*::after {
+
+    box-sizing: border-box;
+
+}
+
+
+html {
+
+    scroll-behavior: smooth;
+
+}
+
+
+body {
+
+    margin:0;
+
+    min-height:100vh;
+
+    background:var(--felios-bg);
+
+    color:var(--felios-text);
+
+    font-family:
+        "Segoe UI",
+        system-ui,
+        -apple-system,
+        sans-serif;
+
+    transition:
+        background var(--transition),
+        color var(--transition);
+
+}
+
+
+/* evitar estilos raros de bootstrap */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+
+    color:var(--felios-text);
+
+}
+
+
+p {
+
+    color:var(--felios-text-soft);
+
+}
+
+
+a {
+
+    color:inherit;
+
+    text-decoration:none;
+
+}
+
+
+
+/* =====================================================
+   CONTENEDOR PRINCIPAL
+===================================================== */
+
+.container {
+
+    width:100%;
+
+    max-width:var(--max-width);
+
+    margin:auto;
+
+    padding:
+
+        30px 35px;
+
+}
+
+/* =====================================
+   NAVBAR FELIOS
+===================================== */
+
+
+.navbar{
+
+
+padding:14px 32px;
+
+
+background:
+
+var(--felios-panel);
+
+
+border-bottom:
+
+1px solid var(--felios-border);
+
+
+box-shadow:
+
+0 8px 25px var(--felios-glow);
+
+
+}
+
+
+
+
+.navbar-brand{
+
+
+font-size:22px;
+
+
+font-weight:800;
+
+
+color:
+
+var(--felios-primary)!important;
+
+
+display:flex;
+
+align-items:center;
+
+gap:10px;
+
+
+}
+
+
+
+
+
+.nav-actions{
+
+
+display:flex;
+
+
+align-items:center;
+
+
+gap:20px;
+
+
+}
+
+
+
+
+.nav-group{
+
+
+display:flex;
+
+align-items:center;
+
+gap:16px;
+
+
+padding-left:10px;
+
+}
+
+
+.nav-group{
+
+
+display:flex;
+
+
+gap:14px;
+
+
+}
+
+.nav-btn{
+
+
+height:44px;
+
+
+padding:0 22px;
+
+
+border-radius:15px;
+
+
+border:
+
+1px solid var(--felios-border);
+
+
+background:
+
+transparent;
+
+
+color:
+
+var(--felios-text);
+
+
+font-weight:700;
+
+
+display:flex;
+
+
+align-items:center;
+
+
+gap:8px;
+
+
+transition:.25s ease;
+
+
+}
+
+
+
+
+.nav-btn:hover{
+
+
+transform:
+
+translateY(-2px);
+
+
+background:
+
+var(--felios-card);
+
+
+box-shadow:
+
+0 8px 20px var(--felios-glow);
+
+
+}
+
+
+
+
+
+.nav-btn.primary{
+gap:14px;
+
+background:
+
+linear-gradient(
+90deg,
+var(--felios-primary),
+var(--felios-accent)
+);
+
+
+color:white;
+
+
+border:none;
+
+
+}
+
+
+
+/* =====================================================
+   BOTONES GENERALES
+===================================================== */
+
+
+button,
+.btn {
+
+
+    border-radius:
+
+        var(--radius-sm);
+
+
+    transition:
+
+        transform var(--transition),
+        box-shadow var(--transition),
+        background var(--transition);
+
+
+}
+
+
+
+button:hover,
+.btn:hover {
+
+
+    transform:
+
+        translateY(-2px);
+
+
+}
+
+
+
+.btn {
+
+
+    font-weight:600;
+
+}
+
+
+
+
+/* botón principal FeliOS */
+
+#btn-copy-felios {
+
+
+   background:
+
+linear-gradient(
+130deg,
+var(--felios-primary),
+var(--felios-accent)
+)!important;
+
+
+color:white!important;
+
+
+border:none!important;
+
+
+}
+
+
+#btn-copy-felios:hover {
+
+
+    box-shadow:
+
+        0 10px 25px
+        var(--felios-glow);
+
+
+}
+
+
+
+
+/* =====================================================
+   SECCIONES
+===================================================== */
+
+
+.section {
+
+    margin-bottom:35px;
+
+}
+
+
+
+.section-title {
+
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    margin-bottom:20px;
+
+
+}
+
+
+
+.section-title h2 {
+
+
+    margin:0;
+
+}
+
+
+
+/* =====================================================
+   UTILIDADES VISUALES
+===================================================== */
+
+
+.clickable {
+
+    cursor:pointer;
+
+}
+
+
+.hidden {
+
+    display:none !important;
+
+}
+
+
+
+.fade {
+
+
+    animation:
+
+        fadeIn .25s ease;
+
+
+}
+
+
+@keyframes fadeIn {
+
+
+    from {
+
+        opacity:0;
+
+        transform:
+            translateY(8px);
+
+    }
+
+
+    to {
+
+        opacity:1;
+
+        transform:
+            translateY(0);
+
+    }
+
+
+}
+
+
+
+/* =====================================================
+   SCROLLBAR
+===================================================== */
+
+
+::-webkit-scrollbar {
+
+
+    width:10px;
+
+
+}
+
+
+::-webkit-scrollbar-track {
+
+
+    background:
+
+        var(--felios-bg);
+
+
+}
+
+
+
+::-webkit-scrollbar-thumb {
+
+
+    background:
+
+        var(--felios-primary);
+
+
+    border-radius:20px;
+
+
+}
+
+.btn-sm {
+
+
+border-radius:12px;
+
+
+font-weight:600;
+
+
+}
+
+.btn-success{
+
+
+background:
+
+var(--success)!important;
+
+
+color:white!important;
+
+
+}
+
+
+.btn-danger{
+
+
+background:
+
+var(--danger)!important;
+
+
+color:white!important;
+
+
+}
+
+
+
+.btn-edit,
+.btn-secondary{
+
+
+background:
+
+var(--edit)!important;
+
+
+color:white!important;
+
+
+}
+/* =================================
+   BOTONES DE ACCIONES
+================================= */
+
+
+.sub-list button,
+.list-group-item button{
+
+
+    border-radius:10px;
+
+    font-size:12px;
+
+    padding:6px 12px;
+
+    border:none;
+
+
+}
+
+
+
+
+.btn-success{
+
+
+    background:#3a9d5d!important;
+
+
+}
+
+
+
+.btn-danger{
+
+
+    background:#d45b5b!important;
+
+
+}
+
+
+
+
+/* editar */
+
+
+.btn-edit,
+.btn-secondary{
+
+
+    background:
+
+    var(--felios-accent)!important;
+
+
+    color:white!important;
+
+
+}
+
+.btn-add,
+#add-debt,
+#add-credit{
+
+
+background:
+
+linear-gradient(
+135deg,
+var(--felios-primary),
+var(--felios-accent)
+)!important;
+
+
+border:none!important;
+
+
+color:white!important;
+
+
+width:32px;
+
+height:32px;
+
+
+border-radius:50%;
+
+
+font-weight:800;
+
+
+box-shadow:
+
+0 5px 15px
+var(--felios-glow);
+
+
+}
+#mode-toggle{
+
+
+height:45px;
+
+border-radius:16px;
+
+font-size:20px;
+
+
+}
+/* botones agregar */
+
+.btn-primary{
+
+
+background:
+
+linear-gradient(
+135deg,
+var(--felios-primary),
+var(--felios-accent)
+)!important;
+
+
+border:none!important;
+
+}
+/* =================================
+   NAVBAR PREMIUM
+================================= */
+
+
+.navbar{
+
+
+min-height:90px;
+
+
+padding:
+
+0 40px;
+
+
+background:
+
+var(--felios-card)!important;
+
+
+border-bottom:
+
+1px solid
+var(--felios-border);
+
+
+backdrop-filter:
+
+blur(15px);
+
+
+}
+
+
+
+.navbar-brand{
+
+
+display:flex;
+
+align-items:center;
+
+gap:12px;
+
+
+font-size:
+
+25px;
+
+
+font-weight:
+
+800;
+
+
+letter-spacing:.3px;
+
+
+color:
+
+var(--felios-primary)!important;
+
+
+}
+
+
+
+.navbar-brand i{
+
+
+font-size:
+
+30px;
+
+
+}
+
+
+
+.navbar .d-flex{
+
+
+gap:14px;
+
+
+}
+.navbar .btn{
+
+
+height:
+
+44px;
+
+
+padding:
+
+0 20px;
+
+
+border-radius:
+
+18px;
+
+
+display:flex;
+
+
+align-items:center;
+
+
+gap:8px;
+
+
+font-weight:
+
+600;
+
+
+border:
+
+1px solid
+var(--felios-border);
+
+
+background:
+
+transparent;
+
+
+color:
+
+var(--felios-text);
+
+
+transition:.25s ease;
+
+
+}
+
+
+
+.navbar .btn:hover{
+
+
+transform:
+
+translateY(-2px);
+
+
+box-shadow:
+
+0 10px 25px
+var(--felios-glow);
+
+
+}
+.btn-history{
+
+
+background:
+
+var(--felios-primary);
+
+
+color:white;
+
+
+border:none;
+
+
+padding:
+
+12px 25px;
+
+
+border-radius:16px;
+
+
+font-weight:700;
+
+
+box-shadow:
+
+0 10px 25px
+var(--felios-glow);
+
+
+
+transition:.25s;
+
+
+}
+
+
+
+.btn-history:hover{
+
+
+transform:
+
+translateY(-3px);
+
+
+}
+/* =====================================================
+   FELIOS BRAND
+===================================================== */
+
+
+.felios-brand {
+
+
+    display:flex;
+
+
+    align-items:center;
+
+
+    gap:10px;
+
+
+
+    font-size:28px;
+
+
+    font-weight:900;
+
+
+    letter-spacing:-0.5px;
+
+
+
+    color:
+
+        var(--felios-primary);
+
+
+
+    text-decoration:none;
+
+
+    transition:.25s ease;
+
+
+}
+
+
+
+.felios-brand:hover {
+
+
+    color:
+
+        var(--felios-accent);
+
+
+    transform:
+
+        translateY(-1px);
+
+
+}
+
+
+
+.felios-brand span {
+
+
+    font-weight:900;
+
+
+}
+/* =====================================================
+   MOBILE
+===================================================== */
+
+
+@media(max-width:768px){
+
+
+    .container {
+
+
+        padding:
+
+            20px 15px;
+    .felios-brand {
+
+
+        font-size:22px;
+
+
+    }
+
+    }
+
+
+    .navbar .btn {
+
+
+        font-size:12px;
+
+        padding:
+
+            7px 10px;
+
+
+    }
+
+
+}
+/* =====================================================
+   FELIOS ECONOMY
+   MOBILE RESPONSIVE FINAL
+===================================================== */
+
+
+@media(max-width:768px){
+
+
+/* =============================
+   NAVBAR
+============================= */
+
+
+.navbar{
+
+    min-height:auto;
+
+    padding:12px 15px;
+
+}
+
+
+.navbar-brand,
+.felios-brand{
+
+
+    font-size:20px;
+
+    gap:6px;
+
+}
+
+
+
+.navbar .d-flex,
+.nav-actions,
+.nav-group{
+
+
+    flex-wrap:wrap;
+
+    justify-content:center;
+
+    gap:8px;
+
+
+}
+
+
+
+.navbar .btn,
+.nav-btn{
+
+
+    height:38px;
+
+    padding:0 12px;
+
+    font-size:12px;
+
+    border-radius:12px;
+
+
+}
+
+
+
+/* ocultar texto largo */
+
+#btn-export-json,
+#btn-import-json{
+
+
+    font-size:0;
+
+
+}
+
+
+#btn-export-json::before{
+
+    content:"☁️";
+
+    font-size:18px;
+
+}
+
+
+#btn-import-json::before{
+
+    content:"☁️";
+
+    font-size:18px;
+
+}
+
+
+
+
+#btn-copy-felios{
+
+
+    font-size:12px;
+
+    padding:0 14px;
+
+}
+
+
+
+/* =============================
+   CONTENEDOR
+============================= */
+
+
+.container{
+
+
+    padding:
+
+    15px;
+
+
+}
+
+
+
+
+
+/* =============================
+   CUENTAS
+============================= */
+
+
+.account-card{
+
+position:relative;
+
+min-height:260px;
+
+}
+
+
+.account-top{
+
+display:flex;
+
+align-items:center;
+
+justify-content:space-between;
+
+}
+
+
+.account-name{
+
+display:flex;
+
+align-items:center;
+
+gap:10px;
+
+font-size:18px;
+
+}
+
+
+.acc-emoji{
+
+font-size:28px;
+
+}
+
+
+.capital-menu{
+
+position:absolute;
+
+top:10px;
+
+right:10px;
+
+border:none;
+
+background:transparent;
+
+font-size:24px;
+
+color:var(--felios-text-soft);
+
+cursor:pointer;
+
+}
+
+
+
+.balance-row{
+
+display:flex;
+
+align-items:center;
+
+justify-content:space-between;
+
+margin-top:20px;
+
+}
+
+
+.edit-balance{
+
+width:32px;
+
+height:32px;
+
+border-radius:50%;
+
+border:none;
+
+background:var(--felios-panel);
+
+color:var(--felios-text);
+
+cursor:pointer;
+
+}
+
+
+.sub-pocket-trigger{
+
+position:absolute;
+
+bottom:18px;
+
+left:0;
+
+right:0;
+
+text-align:center;
+
+font-size:12px;
+
+color:var(--felios-text-soft);
+
+cursor:pointer;
+
+}
+
+
+
+/* =============================
+   BOLSILLOS
+============================= */
+
+
+#pockets{
+
+
+    display:grid!important;
+
+
+    grid-template-columns:
+
+    1fr!important;
+
+
+    gap:15px;
+
+
+}
+
+
+
+.pocket-card{
+
+
+    width:100%;
+
+}
+
+
+
+
+.pocket-header{
+
+
+    font-size:15px;
+
+
+}
+
+
+
+
+.pocket-total strong{
+
+
+    font-size:22px;
+
+
+}
+
+
+
+
+/* =============================
+   DEUDAS
+============================= */
+
+
+#debts,
+#credits{
+
+
+    width:100%;
+
+
+}
+
+
+
+.list-group-item{
+
+
+    font-size:13px;
+
+
+}
+
+
+
+
+
+/* =============================
+   BOTONES DESEOS
+============================= */
+
+
+.desire-actions-main{
+
+
+    flex-wrap:wrap;
+
+
+}
+
+
+.desire-actions-main button{
+
+
+    font-size:10px;
+
+    padding:7px 5px;
+
+
+}
+
+
+
+
+/* =============================
+   TOTALES
+============================= */
+
+
+#total-sin-p,
+#total-deseado,
+#total-real{
+
+
+    font-size:20px;
+
+
+}
+
+
+
+
+
+}
+/* Botones JSON: IDs actuales */
+#btn-export,
+#btn-import {
+    font-size: 12px;
+}
+
+/* =====================================================
+   FeliOS — ventana de copia manual (fallback)
+   ===================================================== */
+
+.felios-copy-overlay{
+    position:fixed;
+    inset:0;
+    z-index:9999;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    background:rgba(0,0,0,.55);
+    backdrop-filter:blur(4px);
+}
+
+.felios-copy-dialog{
+    width:min(760px,100%);
+    max-height:85vh;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    padding:18px;
+    background:var(--felios-card);
+    color:var(--felios-text);
+    border:1px solid var(--felios-border);
+    border-radius:18px;
+    box-shadow:0 25px 70px rgba(0,0,0,.35);
+}
+
+.felios-copy-header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+}
+
+.felios-copy-close{
+    width:32px;
+    height:32px;
+    border:0;
+    border-radius:50%;
+    background:var(--felios-panel);
+    color:var(--felios-text);
+    font-size:20px;
+    cursor:pointer;
+}
+
+.felios-copy-text{
+    width:100%;
+    min-height:360px;
+    resize:vertical;
+    padding:12px;
+    background:var(--felios-panel);
+    color:var(--felios-text);
+    border:1px solid var(--felios-border);
+    border-radius:12px;
+    font:12px/1.5 monospace;
+}
+
+.felios-copy-select{
+    align-self:flex-end;
+    padding:9px 14px;
+    border:0;
+    border-radius:11px;
+    background:var(--felios-primary);
+    color:#fff;
+    font-weight:700;
+    cursor:pointer;
+}

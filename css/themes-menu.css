@@ -1,0 +1,598 @@
+/* =====================================================
+   FELIOS ECONOMY
+   THEME MENU
+===================================================== */
+
+
+/* =====================================================
+   CONTENEDOR MENU
+===================================================== */
+
+.theme-menu {
+
+    position:fixed;
+
+    top:70px;
+    right:20px;
+
+    width:300px;
+
+    padding:18px;
+
+    background:
+        var(--felios-panel);
+
+    border:
+        1px solid
+        var(--felios-border);
+
+    border-radius:
+        22px;
+
+
+    box-shadow:
+        0 25px 60px
+        rgba(0,0,0,.35);
+
+
+    color:
+        var(--felios-text);
+
+
+    z-index:9999;
+
+
+    opacity:0;
+
+    visibility:hidden;
+
+
+    transform:
+        translateY(-15px);
+
+
+    transition:
+        .25s ease;
+
+
+}
+
+
+
+/* abierto */
+
+.theme-menu.show {
+
+    opacity:1;
+
+    visibility:visible;
+
+
+    transform:
+        translateY(0);
+
+}
+
+
+
+/* =====================================================
+   TITULO
+===================================================== */
+
+
+.theme-header {
+
+    margin-bottom:18px;
+
+}
+
+
+
+.theme-header h3 {
+
+
+    margin:0;
+
+
+    font-size:18px;
+
+
+    font-weight:800;
+
+
+    color:
+        var(--felios-text);
+
+
+}
+
+
+
+/* =====================================================
+   LISTA
+===================================================== */
+
+
+.theme-list {
+
+
+    display:flex;
+
+
+    flex-direction:column;
+
+
+    gap:10px;
+
+
+}
+
+
+
+/* =====================================================
+   ITEMS
+===================================================== */
+
+
+.theme-item {
+
+
+    position:relative;
+
+
+    display:flex;
+
+
+    align-items:center;
+
+
+    gap:14px;
+
+
+    padding:
+
+        13px 15px;
+
+
+    min-height:
+
+        62px;
+
+
+
+    border-radius:
+
+        16px;
+
+
+
+    cursor:pointer;
+
+
+
+    overflow:hidden;
+
+
+
+    background:
+
+        var(--theme-bg);
+
+
+
+    border:
+
+        1px solid
+
+        var(--theme-color);
+
+
+
+    color:
+
+        var(--felios-text);
+
+
+
+    transition:
+
+        .25s ease;
+
+
+}
+
+
+
+/* barra lateral */
+
+.theme-item::before {
+
+
+    content:"";
+
+
+    position:absolute;
+
+
+    left:0;
+
+
+    top:0;
+
+
+    width:5px;
+
+
+    height:100%;
+
+
+    background:
+
+        var(--theme-color);
+
+
+}
+
+
+
+/* hover */
+
+
+.theme-item:hover {
+
+
+    transform:
+
+        translateX(-3px);
+
+
+
+    box-shadow:
+
+
+        0 8px 20px
+
+        color-mix(
+            in srgb,
+            var(--theme-color) 25%,
+            transparent
+        );
+
+
+}
+
+
+/* =====================================================
+   ITEM ACTIVO
+===================================================== */
+
+
+.theme-item.active {
+
+
+    border:
+
+        2px solid
+
+        var(--theme-color);
+
+
+
+    box-shadow:
+
+
+        0 0 12px
+
+        color-mix(
+            in srgb,
+            var(--theme-color) 35%,
+            transparent
+        );
+
+
+
+    transform:
+
+        translateX(-3px);
+
+
+}
+
+
+/* =====================================================
+   ICONO
+===================================================== */
+
+
+.theme-icon {
+
+
+    width:38px;
+
+
+    height:38px;
+
+
+    display:flex;
+
+
+    align-items:center;
+
+
+    justify-content:center;
+
+
+
+    font-size:26px;
+
+
+    flex-shrink:0;
+
+
+}
+
+
+
+/*=====================================================
+   TEXTO
+===================================================== */
+
+.theme-info {
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+
+.theme-info strong {
+
+    font-size:15px;
+
+    font-weight:800;
+
+    color:
+        var(--felios-text);
+
+}
+
+
+.theme-info p {
+
+    margin:
+
+        3px 0 0;
+
+
+    font-size:12px;
+
+
+    color:
+
+        var(--felios-text-soft);
+
+}
+
+
+
+/* =====================================================
+   MODO OSCURO
+   Texto siempre visible
+===================================================== */
+
+
+[data-mode="dark"] .theme-item {
+
+
+    color:#FFFFFF;
+
+
+}
+
+
+
+[data-mode="dark"] .theme-info strong {
+
+
+    color:#FFFFFF;
+
+
+}
+
+
+
+[data-mode="dark"] .theme-info p {
+
+
+    color:
+
+        rgba(255,255,255,.65);
+
+
+}
+
+
+
+[data-mode="dark"] .theme-header h3 {
+
+
+    color:#FFFFFF;
+
+
+}
+
+
+
+/* icono mantiene colores originales */
+
+[data-mode="dark"] .theme-icon {
+
+
+    filter:none;
+
+
+}
+
+/* =====================================================
+   AJUSTE MODO OSCURO
+===================================================== */
+
+
+/* evita que el panel herede un blanco raro */
+
+[data-mode="dark"] .theme-menu {
+
+
+    background:
+
+        color-mix(
+            in srgb,
+            var(--felios-panel) 95%,
+            black
+        );
+
+
+    border-color:
+
+        var(--felios-border);
+
+
+
+    box-shadow:
+
+
+        0 25px 70px
+
+        rgba(0,0,0,.65);
+
+
+}
+
+
+
+/* textos oscuros correctamente */
+
+[data-mode="dark"] .theme-info strong,
+[data-mode="dark"] .theme-header h3 {
+
+    margin:0;
+    color:#ffe8d8;
+
+
+}
+
+
+[data-mode="dark"] .theme-info p {
+
+
+    color:
+
+        var(--felios-text-soft);
+
+
+}
+
+
+
+/* =====================================================
+   BOTON TEMAS
+===================================================== */
+
+
+#themes-button {
+
+
+    cursor:pointer;
+
+
+}
+
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+
+@media(max-width:600px){
+
+
+    .theme-menu {
+
+
+        left:10px;
+
+
+        right:10px;
+
+
+        width:auto;
+
+
+    }
+
+
+}
+@media(max-width:600px){
+
+
+.theme-menu{
+
+
+    top:65px;
+
+
+    left:12px;
+
+
+    right:12px;
+
+
+    width:auto;
+
+
+    padding:14px;
+
+
+}
+
+
+
+.theme-item{
+
+
+    min-height:55px;
+
+
+    padding:10px;
+
+
+}
+
+
+
+.theme-icon{
+
+
+    width:32px;
+
+    height:32px;
+
+    font-size:23px;
+
+
+}
+
+
+
+.theme-info strong{
+
+
+    font-size:14px;
+
+
+}
+
+
+}

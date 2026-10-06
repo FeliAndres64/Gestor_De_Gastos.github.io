@@ -1,0 +1,88 @@
+/* =====================================================
+   FELIOS ECONOMY — ACABADO FINAL
+===================================================== */
+
+html{scroll-padding-top:92px}
+body{overflow-x:hidden}
+
+/* ---------- Topbar persistente ---------- */
+.navbar{
+  position:sticky!important;top:0;z-index:1040;
+  background:color-mix(in srgb,var(--felios-panel) 90%,transparent)!important;
+  backdrop-filter:blur(18px) saturate(1.25);
+  -webkit-backdrop-filter:blur(18px) saturate(1.25);
+  box-shadow:0 7px 24px color-mix(in srgb,var(--felios-text) 8%,transparent)!important;
+}
+.navbar .container-fluid{display:flex;align-items:center;gap:16px;max-width:1600px;margin:auto}
+.felios-brand{cursor:pointer;flex:0 0 auto;transition:transform .18s ease,opacity .18s ease}
+.felios-brand:hover{transform:translateY(-1px);opacity:.92}
+.nav-actions{margin-left:auto;gap:8px!important;min-width:0}
+.nav-primary-tools{display:flex;align-items:center;gap:7px;padding-right:6px;border-right:1px solid var(--felios-border)}
+.nav-icon-btn,.nav-mobile-more{
+  height:40px;display:inline-flex;align-items:center;justify-content:center;gap:7px;
+  border:1px solid var(--felios-border);border-radius:12px;background:var(--felios-card);color:var(--felios-text);
+  padding:0 12px;font-size:12px;font-weight:800;cursor:pointer;box-shadow:0 4px 14px color-mix(in srgb,var(--felios-text) 5%,transparent)
+}
+.nav-icon-btn i{font-size:15px}.nav-icon-btn.primary{border-color:transparent;background:linear-gradient(135deg,var(--felios-primary),var(--felios-accent));color:#fff}
+.nav-mobile-more{display:none;width:40px;padding:0}
+#mode-toggle,#themes-button{height:40px!important;margin:0!important;border-radius:12px!important}
+.nav-group{gap:7px!important;padding-left:0!important}.nav-btn{height:40px!important;padding:0 12px!important;border-radius:12px!important;font-size:11px!important}.nav-btn.primary{gap:7px!important}
+
+/* ---------- Totales ---------- */
+.total-help{display:block;min-height:28px;margin:-2px 0 8px;color:var(--felios-text-soft);font-size:9px;line-height:1.35}
+
+/* ---------- Botón historial ---------- */
+.btn-history{display:inline-grid!important;grid-template-columns:auto auto;align-items:center;gap:1px 9px;min-width:220px;padding:11px 17px!important;border:1px solid var(--felios-border)!important;background:var(--felios-card)!important;color:var(--felios-text)!important;box-shadow:0 8px 24px color-mix(in srgb,var(--felios-text) 7%,transparent)!important}
+.btn-history>i{grid-row:1/3;font-size:18px;color:var(--felios-primary)}.btn-history>span{font-size:12px;font-weight:850;text-align:left}.btn-history>small{font-size:8px;color:var(--felios-text-soft);font-weight:600;text-align:left}
+
+/* ---------- Gráficos finales ---------- */
+.finance-dashboard{margin-top:48px!important;padding-top:6px;scroll-margin-top:90px}
+.finance-dashboard-controls-v2{max-width:760px}
+.finance-custom-range{display:flex;gap:8px;align-items:center}.finance-custom-range[hidden]{display:none!important}
+.finance-collapse{align-self:flex-start;border:1px solid var(--felios-border);background:var(--felios-card);color:var(--felios-text-soft);border-radius:11px;padding:8px 11px;font-size:10px;font-weight:800;white-space:nowrap;cursor:pointer}
+.finance-dashboard-head{flex-wrap:wrap}.finance-dashboard-head .finance-collapse{order:3;margin-left:auto}
+.finance-collapsed .financial-state-card,.finance-collapsed .finance-charts-grid{display:none}.finance-collapsed{margin-bottom:18px!important}.finance-collapsed .finance-dashboard-head{margin-bottom:0}
+.finance-kpi-grid-v2{grid-template-columns:repeat(4,minmax(0,1fr))!important}.finance-period-completed{display:flex;align-items:center;gap:8px;padding:9px 11px;margin-bottom:9px;border:1px solid color-mix(in srgb,var(--success) 28%,var(--felios-border));border-radius:12px;background:color-mix(in srgb,var(--success) 7%,var(--felios-card));color:var(--felios-text-soft);font-size:10px}.finance-period-completed strong{margin-left:auto;color:var(--success);font-size:15px}.finance-period-completed small{color:var(--felios-text-soft)}.finance-svg .hidden-bar{opacity:0!important;pointer-events:none}
+
+/* ---------- Overlay final común ---------- */
+body.felios-final-modal-open{overflow:hidden}
+.felios-final-overlay{position:fixed;inset:0;z-index:11000;display:flex;align-items:center;justify-content:center;padding:18px;background:color-mix(in srgb,#000 48%,transparent);backdrop-filter:blur(7px);opacity:0;transition:opacity .15s ease}
+.felios-final-overlay.show{opacity:1}.felios-final-card{width:min(520px,100%);max-height:min(88vh,780px);display:flex;flex-direction:column;overflow:hidden;border:1px solid var(--felios-border);border-radius:22px;background:var(--felios-card);box-shadow:0 30px 85px rgba(0,0,0,.27);transform:translateY(8px) scale(.985);transition:transform .18s ease}.felios-final-overlay.show .felios-final-card{transform:none}.felios-final-card.wide{width:min(760px,100%)}.felios-final-card.search-card{width:min(720px,100%)}
+.felios-final-card>header{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:18px 20px 14px;border-bottom:1px solid var(--felios-border);background:linear-gradient(180deg,color-mix(in srgb,var(--felios-panel) 84%,transparent),transparent)}.felios-final-card>header small{display:block;margin-bottom:3px;color:var(--felios-primary);font-size:8px;font-weight:900;letter-spacing:.12em}.felios-final-card>header h4{margin:0;font-size:17px;font-weight:850}.felios-final-close{width:34px;height:34px;border:1px solid var(--felios-border);border-radius:11px;background:var(--felios-panel);color:var(--felios-text);font-size:20px;line-height:1;cursor:pointer}.felios-final-body{overflow:auto;padding:18px 20px 20px}
+.felios-final-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:18px;padding-top:14px;border-top:1px solid var(--felios-border)}.felios-final-actions button{border-radius:11px;padding:9px 13px;font-size:10px;font-weight:850;cursor:pointer}.felios-final-actions .secondary{border:1px solid var(--felios-border);background:var(--felios-panel);color:var(--felios-text)}.felios-final-actions .primary{border:0;background:var(--felios-primary);color:#fff}
+
+/* ---------- Búsqueda global ---------- */
+.global-search-box{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:9px;padding:11px 13px;border:1px solid color-mix(in srgb,var(--felios-primary) 36%,var(--felios-border));border-radius:14px;background:var(--felios-panel);box-shadow:0 0 0 3px color-mix(in srgb,var(--felios-primary) 7%,transparent)}.global-search-box i{color:var(--felios-primary);font-size:16px}.global-search-box input{min-width:0;border:0;outline:0;background:transparent;color:var(--felios-text);font-size:13px}.global-search-box kbd{padding:3px 6px;border:1px solid var(--felios-border);border-radius:6px;background:var(--felios-card);color:var(--felios-text-soft);font-size:8px}.global-search-hint{margin:8px 2px 12px;color:var(--felios-text-soft);font-size:9px}.global-search-results{display:flex;flex-direction:column;gap:5px}.global-search-result{width:100%;display:grid;grid-template-columns:38px minmax(0,1fr) auto;align-items:center;gap:10px;padding:9px 10px;border:1px solid transparent;border-radius:12px;background:transparent;color:var(--felios-text);text-align:left;cursor:pointer}.global-search-result:hover{border-color:var(--felios-border);background:var(--felios-panel);transform:none}.global-search-icon{width:36px;height:36px;display:grid;place-items:center;border-radius:10px;background:var(--felios-panel);font-size:16px}.global-search-result strong{display:block;font-size:11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.global-search-result small{display:block;margin-top:2px;color:var(--felios-text-soft);font-size:8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.global-search-result>i{color:var(--felios-text-soft)}.global-search-empty{padding:38px 12px;text-align:center;color:var(--felios-text-soft);font-size:10px}
+.felios-focus-pulse{animation:feliosFocus 1.7s ease}@keyframes feliosFocus{0%,100%{box-shadow:inherit}25%,65%{box-shadow:0 0 0 4px color-mix(in srgb,var(--felios-primary) 26%,transparent),0 18px 42px var(--felios-glow)}}
+
+/* ---------- Acciones rápidas ---------- */
+.quick-action-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.quick-action-grid button{display:grid;grid-template-columns:36px 1fr;align-items:center;gap:10px;padding:12px;border:1px solid var(--felios-border);border-radius:14px;background:var(--felios-panel);color:var(--felios-text);text-align:left;cursor:pointer}.quick-action-grid button:hover{border-color:color-mix(in srgb,var(--felios-primary) 40%,var(--felios-border));background:color-mix(in srgb,var(--felios-primary) 5%,var(--felios-panel))}.quick-action-grid button>span{width:36px;height:36px;display:grid;place-items:center;border-radius:11px;background:var(--felios-card);font-size:17px}.quick-action-grid strong{display:block;font-size:10px}.quick-action-grid small{display:block;margin-top:3px;color:var(--felios-text-soft);font-size:8px;line-height:1.3}
+
+/* ---------- Configuración ---------- */
+.settings-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.settings-grid section{display:flex;flex-direction:column;gap:7px}.settings-grid section>small{margin:0 2px 2px;color:var(--felios-text-soft);font-size:8px;font-weight:900;letter-spacing:.11em}.settings-grid section>button,.settings-select{display:grid;grid-template-columns:34px minmax(0,1fr) auto;align-items:center;gap:9px;min-height:54px;padding:9px 10px;border:1px solid var(--felios-border);border-radius:13px;background:var(--felios-panel);color:var(--felios-text);text-align:left}.settings-grid section>button{cursor:pointer}.settings-grid section>button>span{width:32px;height:32px;display:grid;place-items:center;border-radius:9px;background:var(--felios-card)}.settings-grid section>button strong{display:block;font-size:10px}.settings-grid section>button small{display:block;margin-top:2px;color:var(--felios-text-soft);font-size:8px}.settings-grid section>button>i{color:var(--felios-text-soft)}.settings-select{grid-template-columns:1fr auto;min-height:47px}.settings-select>span{font-size:9px;font-weight:800}.settings-select select{max-width:150px;border:1px solid var(--felios-border);border-radius:9px;padding:6px 8px;background:var(--felios-card);color:var(--felios-text);font-size:9px}.settings-data-actions{display:grid;grid-template-columns:1fr 1fr;gap:7px}.settings-data-actions button{border:1px solid var(--felios-border);border-radius:11px;padding:9px;background:var(--felios-panel);color:var(--felios-text);font-size:9px;font-weight:800;cursor:pointer}.settings-note{margin:4px 2px 0;font-size:8px;line-height:1.45;color:var(--felios-text-soft)}
+.mobile-more-list{display:flex;flex-direction:column;gap:6px}.mobile-more-list button{display:grid;grid-template-columns:34px 1fr auto;align-items:center;gap:9px;padding:10px;border:1px solid var(--felios-border);border-radius:12px;background:var(--felios-panel);color:var(--felios-text);text-align:left;cursor:pointer}.mobile-more-list button>span{width:32px;height:32px;display:grid;place-items:center;border-radius:9px;background:var(--felios-card)}.mobile-more-list button strong{font-size:10px}.mobile-more-list button i{color:var(--felios-text-soft)}
+
+/* ---------- Consistencia responsive ---------- */
+.account-card,.economic-pocket-card,.debt-panel,.card,.finance-chart-card,.financial-state-card{transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease}
+section,.debt-section,#accounts,#pockets{scroll-margin-top:92px}
+
+@media(max-width:1100px){
+  .nav-group,#themes-button{display:none!important}.nav-mobile-more{display:inline-flex}.finance-kpi-grid-v2{grid-template-columns:repeat(4,minmax(0,1fr))!important}
+}
+
+@media(max-width:820px){
+  :root{--radius-lg:18px}.container{padding:18px 14px!important}
+  .navbar{padding:8px 10px!important}.navbar .container-fluid{gap:7px;padding:0!important;flex-wrap:nowrap}.felios-brand{font-size:18px!important;gap:6px!important}.felios-brand span{font-size:0}.felios-brand span::after{content:'FeliOS';font-size:16px}
+  .nav-actions{gap:5px!important;flex:1;justify-content:flex-end}.nav-primary-tools{gap:5px;padding-right:0;border-right:0}.nav-icon-btn{width:38px;height:38px;padding:0}.nav-icon-btn span{display:none}.nav-primary-tools #btn-settings{display:none}
+  #themes-button,.nav-group{display:none!important}#mode-toggle{width:38px!important;padding:0!important}.nav-mobile-more{display:inline-flex}
+  .finance-dashboard{margin-top:34px!important}.finance-dashboard-head{gap:11px!important}.finance-dashboard-controls{width:100%;display:grid!important;grid-template-columns:1fr 1fr;gap:7px!important}.finance-custom-range{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr}.finance-control{min-width:0!important;padding:7px 8px!important}.finance-control span{font-size:8px!important}.finance-control input,.finance-control select{font-size:10px!important;width:100%;min-width:0!important}.finance-collapse{order:2!important;margin-left:auto!important}.finance-kpi-grid-v2{grid-template-columns:repeat(2,minmax(0,1fr))!important}.finance-chart-card,.financial-state-card{padding:14px!important;border-radius:17px!important}.finance-chart-head{gap:8px}.finance-chart-head p{font-size:9px!important}.finance-svg{min-width:560px}.finance-chart{overflow-x:auto;overscroll-behavior-inline:contain}.finance-chart::-webkit-scrollbar{height:5px}.finance-donut-wrap{gap:12px!important}
+  .settings-grid{grid-template-columns:1fr}.quick-action-grid{grid-template-columns:1fr 1fr}.felios-final-overlay{align-items:flex-end;padding:8px}.felios-final-card,.felios-final-card.wide,.felios-final-card.search-card{width:100%;max-height:92vh;border-radius:20px 20px 14px 14px}.felios-final-card>header{padding:15px 14px 11px}.felios-final-body{padding:13px 14px 16px}
+  .row.g-3,.row.g-4{--bs-gutter-x:.75rem}.account-card,.economic-pocket-card{border-radius:17px!important}.debt-overview-grid{gap:12px!important}.debt-panel{border-radius:18px!important}
+  button:hover,.btn:hover{transform:none}
+}
+
+@media(max-width:520px){
+  .container{padding:14px 10px!important}.navbar{padding:7px 8px!important}.felios-brand{min-width:65px}.nav-icon-btn,#mode-toggle,.nav-mobile-more{width:36px!important;height:36px!important;border-radius:11px!important}.nav-primary-tools{gap:4px}.finance-dashboard-controls{grid-template-columns:1fr}.finance-custom-range{grid-template-columns:1fr 1fr}.finance-kpi-grid-v2{grid-template-columns:1fr 1fr!important}.finance-kpi{padding:10px!important}.finance-kpi strong{font-size:13px!important}.finance-kpi small{font-size:8px!important}.financial-state-badge{font-size:8px!important}.finance-period-completed{display:grid;grid-template-columns:1fr auto}.finance-period-completed small{grid-column:1/-1}.finance-debt-row{grid-template-columns:72px 1fr!important}.finance-donut{width:146px!important;height:146px!important}.finance-donut::after{width:96px!important;height:96px!important}
+  .quick-action-grid{grid-template-columns:1fr}.global-search-box{grid-template-columns:auto 1fr}.global-search-box kbd{display:none}.global-search-result{grid-template-columns:34px minmax(0,1fr) auto;padding:8px 6px}.global-search-icon{width:32px;height:32px}.settings-data-actions{grid-template-columns:1fr}.btn-history{width:100%;max-width:340px}
+  .total-help{min-height:0}.card-body{padding:14px!important}
+}

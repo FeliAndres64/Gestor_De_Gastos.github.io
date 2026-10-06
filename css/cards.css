@@ -1,0 +1,1948 @@
+/* =====================================================
+   FELIOS ECONOMY
+   CARDS SYSTEM
+
+   Cuentas
+   Bolsillos
+   Totales
+===================================================== */
+
+
+/* =====================================================
+   BASE CARD
+===================================================== */
+
+
+.card {
+
+
+    background:
+
+        var(--felios-card)
+        !important;
+
+
+    border:
+
+        1px solid
+        var(--felios-border)
+        !important;
+
+
+    color:
+
+        var(--felios-text)
+        !important;
+
+
+    border-radius:
+
+        var(--radius-lg);
+
+
+    overflow:hidden;
+
+
+    transition:
+
+        transform var(--transition),
+        box-shadow var(--transition),
+        border var(--transition);
+
+
+
+}
+
+
+
+
+.card:hover {
+
+
+    transform:
+
+        translateY(-4px);
+
+
+    box-shadow:
+
+        0 15px 35px
+        var(--felios-glow);
+
+
+}
+
+
+
+
+
+/* =====================================================
+   CARD BODY
+===================================================== */
+
+
+.card-body {
+
+
+    padding:
+
+        22px;
+
+
+}
+
+
+
+.card-title {
+
+
+    color:
+
+        var(--felios-text);
+
+
+}
+
+
+
+.card-subtitle {
+
+
+    color:
+
+        var(--felios-text-soft)
+        !important;
+
+
+}
+
+
+
+
+
+/* =================================
+ CUENTAS IDENTIDAD
+================================= */
+
+
+.acc-1 {
+
+border:
+1px solid color-mix(
+in srgb,
+var(--capital-color) 40%,
+var(--felios-border)
+);
+
+box-shadow:
+0 10px 30px
+color-mix(
+in srgb,
+var(--capital-color) 15%,
+transparent
+);
+
+
+}
+
+
+
+/* =====================================================
+   BOLSILLOS
+===================================================== */
+
+
+.pocket-card {
+
+
+    height:
+
+        100%;
+
+
+}
+
+
+
+.pocket-header {
+
+
+    font-size:
+
+        18px;
+
+
+    font-weight:
+
+        700;
+
+
+    color:
+
+        var(--felios-primary);
+
+
+    margin-bottom:
+
+        12px;
+
+
+}
+
+
+
+.pocket-card .small {
+
+
+    color:
+
+        var(--felios-text-soft);
+
+
+}
+
+
+
+.pocket-card strong {
+
+
+    color:
+
+        var(--felios-text);
+
+
+}
+
+
+
+.pocket-card .mt-2 {
+
+
+    font-size:
+
+        17px;
+
+
+}
+
+
+
+
+
+/* =====================================================
+   DESEOS DENTRO DE BOLSILLOS
+===================================================== */
+
+
+.pocket-desires {
+
+
+    margin-top:
+
+        15px;
+
+
+}
+
+
+
+.pocket-desires .list-group-item {
+
+
+    background:
+
+        transparent
+        !important;
+
+
+    border-color:
+
+        var(--felios-border)
+        !important;
+
+
+    color:
+
+        var(--felios-text)
+        !important;
+
+
+}
+
+
+
+
+
+/* =====================================================
+   TOTALES GENERALES
+===================================================== */
+
+
+.breakdown-trigger {
+
+
+    cursor:pointer;
+
+
+}
+
+
+
+#total-sin-p,
+#total-deseado,
+#total-real {
+
+
+    font-size:
+
+        28px;
+
+
+    font-weight:
+
+        800;
+
+
+    color:
+
+        var(--felios-primary);
+
+
+}
+
+
+
+
+
+/* tarjeta resumen */
+
+.card.shadow-sm {
+
+
+    box-shadow:
+
+        0 10px 25px
+        var(--felios-glow)
+        !important;
+
+
+}
+
+
+
+
+
+/* =====================================================
+   BOTONES DENTRO DE CARDS
+===================================================== */
+
+
+.card .btn {
+
+
+    border-radius:
+
+        12px;
+
+
+}
+/* =================================
+   CUENTAS V2
+================================= */
+
+
+#accounts .account-card{
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:flex-start;
+
+    align-items:stretch;
+
+    min-height:260px;
+
+    padding:22px;
+
+    position:relative;
+
+}
+#accounts .account-top{
+
+    width:100%;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:flex-start;
+
+}
+#accounts .account-name{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+}
+#accounts .acc-emoji{
+
+    font-size:32px;
+
+}
+
+/* menú tres puntos */
+
+.capital-menu{
+
+    position:absolute;
+
+    top:12px;
+
+    right:12px;
+
+    width:28px;
+
+    height:28px;
+
+    background:none;
+
+    border:none;
+
+    color:var(--felios-text-soft);
+
+    font-size:24px;
+
+}
+
+
+
+
+
+/* tipo de cuenta */
+
+#accounts .account-type{
+
+    margin-top:18px;
+
+    font-size:14px;
+
+    color:var(--felios-text-soft);
+
+}
+
+
+
+
+
+/* saldo */
+
+#accounts .balance-row{
+
+    width:100%;
+
+    margin-top:8px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+}
+
+
+
+#accounts .balance{
+
+    font-size:26px;
+
+    font-weight:900;
+
+}
+
+
+
+
+
+/* editar saldo */
+
+.edit-balance{
+
+    width:34px;
+
+    height:34px;
+
+    border-radius:50%;
+
+    border:none;
+
+    background:var(--felios-panel);
+
+    font-size:14px;
+
+}
+
+
+
+
+
+/* divisiones abajo */
+
+.sub-pocket-trigger{
+
+    position:absolute;
+
+    bottom:18px;
+
+    left:0;
+
+    width:100%;
+
+    text-align:center;
+
+    font-size:12px;
+
+    color:var(--felios-text-soft);
+
+}
+
+
+
+
+
+/* eliminar futuro menu */
+
+.delete-account{
+
+    display:none!important;
+
+
+}
+/* =================================
+   BOTONES CAPITAL
+================================= */
+
+
+.account-footer{
+
+    display:flex;
+
+    width:100%;
+
+    gap:8px;
+
+    margin-top:15px;
+
+}
+
+
+
+.account-footer button{
+
+    flex:1;
+
+    border:none;
+
+    border-radius:12px;
+
+    padding:8px 5px;
+
+    font-size:12px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+
+
+
+.account-footer button:hover{
+
+    transform:translateY(-2px);
+
+}
+
+
+
+/* Dinero */
+
+.add-money-account{
+
+    background:
+
+    var(--success);
+
+    color:white;
+
+}
+
+
+
+/* Transferencia */
+
+.transfer-account{
+
+    background:
+
+    var(--felios-primary);
+
+    color:white;
+
+}
+
+
+
+/* Divisiones */
+
+.view-subpockets{
+
+    background:
+
+    var(--felios-panel);
+
+    color:
+
+    var(--felios-text);
+
+    border:
+
+    1px solid var(--felios-border)!important;
+
+}
+
+#accounts .card-title{
+
+
+    display:flex;
+
+    align-items:center;
+
+    font-size:15px;
+
+    font-weight:700;
+
+        color: var(--felios-text);
+
+
+}
+.account-card .delete-account{
+
+    width:36px;
+
+    height:36px;
+
+    border-radius:50%;
+
+    background:
+
+    var(--danger);
+
+    color:white;
+
+    border:none;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+
+
+.account-card .delete-account:hover{
+
+    transform:scale(1.08);
+
+}
+/* =================================
+   EDITAR SALDO CUENTA
+================================= */
+
+
+.account-card .edit-account {
+
+
+    width:36px;
+
+    height:36px;
+
+
+    border-radius:50%;
+
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+
+    background:
+
+var(--felios-card)!important;
+
+
+border-color:
+
+var(--felios-border)!important;
+
+
+color:
+
+var(--felios-text)!important;
+
+
+    border:none;
+
+
+    color:white;
+
+
+    box-shadow:
+
+    0 5px 15px
+    var(--felios-glow);
+
+
+    transition:.25s ease;
+
+
+}
+
+
+.account-card .edit-account:hover{
+
+
+    transform:
+
+    scale(1.08);
+
+
+}
+/* =============================
+   DEUDAS / CREDITOS
+============================= */
+
+
+#debts-list,
+#credits-list {
+
+
+background:transparent;
+
+
+}
+
+
+
+.list-group-item {
+
+
+background:
+
+var(--felios-card)!important;
+
+
+border-color:
+
+var(--felios-border)!important;
+
+
+color:
+
+var(--felios-text)!important;
+
+
+margin-bottom:8px;
+
+
+border-radius:12px!important;
+
+
+}
+
+
+
+.sub-list .list-group-item {
+
+
+background:
+
+var(--felios-panel)!important;
+
+
+margin-top:6px;
+
+
+}
+
+
+
+.sub-list button {
+
+
+padding:
+
+6px 12px;
+
+
+font-size:
+
+11px;
+
+
+}
+.salary-box {
+
+
+background:
+
+var(--felios-card);
+
+
+border:
+
+1px solid var(--felios-border);
+
+
+border-radius:
+
+20px;
+
+
+padding:
+
+20px;
+
+
+margin-bottom:
+
+20px;
+
+
+box-shadow:
+
+0 10px 25px var(--felios-glow);
+
+
+}
+
+
+
+.salary-box strong {
+
+
+font-size:22px;
+
+
+color:
+
+var(--felios-primary);
+
+
+}
+
+/* ======================================
+   FELIOS POCKET SYSTEM
+====================================== */
+
+
+
+.salary-card{
+
+
+background:
+
+var(--felios-card);
+
+
+border:
+
+1px solid
+
+var(--felios-border);
+
+
+border-radius:22px;
+
+
+padding:20px;
+
+
+display:flex;
+
+
+justify-content:space-between;
+
+
+align-items:center;
+
+
+box-shadow:
+
+0 15px 35px
+
+var(--felios-glow);
+
+
+}
+
+
+
+
+.salary-title{
+
+
+font-size:18px;
+
+
+font-weight:800;
+
+
+color:
+
+var(--felios-primary);
+
+
+}
+
+
+
+
+.salary-row{
+
+
+display:flex;
+
+
+gap:15px;
+
+
+color:
+
+var(--felios-text-soft);
+
+
+margin-top:6px;
+
+
+}
+
+
+
+
+.salary-row strong{
+
+
+color:
+
+var(--felios-text);
+
+
+}
+
+
+
+
+
+
+.salary-actions{
+
+
+display:flex;
+
+
+gap:10px;
+
+
+}
+
+
+
+
+.icon-action,
+.add-action{
+
+
+border:none;
+
+
+border-radius:14px;
+
+
+padding:8px 14px;
+
+
+cursor:pointer;
+
+
+}
+
+
+
+
+
+.icon-action{
+
+
+background:
+
+var(--edit);
+
+
+}
+
+
+
+
+
+.add-action{
+
+
+background:
+
+var(--add);
+
+
+color:white;
+
+
+}
+
+
+
+
+
+
+
+
+.pocket-card{
+
+
+background:
+
+var(--felios-card);
+
+
+border:
+
+1px solid
+
+var(--felios-border);
+
+
+border-radius:20px;
+
+
+padding:18px;
+
+
+height:100%;
+
+
+transition:.25s;
+
+
+}
+
+
+
+
+.pocket-card:hover{
+
+
+transform:
+
+translateY(-5px);
+
+
+box-shadow:
+
+0 15px 35px
+
+var(--felios-glow);
+
+
+}
+
+
+
+
+.pocket-header{
+
+
+font-size:16px;
+
+
+font-weight:800;
+
+
+color:
+
+var(--felios-primary);
+
+
+margin-bottom:10px;
+
+
+}
+
+
+
+
+.pocket-info{
+
+
+font-size:12px;
+
+
+color:
+
+var(--felios-text-soft);
+
+
+}
+
+
+
+
+.pocket-total{
+
+
+margin-top:15px;
+
+
+font-size:14px;
+
+
+color:
+
+var(--felios-text);
+
+
+}
+
+
+
+
+.pocket-total strong{
+
+
+font-size:20px;
+
+
+}
+
+
+
+
+.pocket-add{
+
+
+width:100%;
+
+
+margin-top:15px;
+
+
+background:
+
+var(--felios-primary);
+
+
+color:white;
+
+
+border:none;
+
+
+border-radius:12px;
+
+
+padding:8px;
+
+
+}
+
+
+
+
+
+.pocket-desires{
+
+
+margin-top:15px;
+
+
+display:flex;
+
+
+flex-direction:column;
+
+
+gap:10px;
+
+
+}
+.desire-item{
+
+background:
+var(--felios-card);
+
+border:
+1px solid var(--felios-border);
+
+border-radius:14px;
+
+padding:10px;
+
+margin-bottom:8px;
+
+transition:.25s ease;
+
+}
+
+
+
+.desire-item:hover{
+
+transform:translateY(-2px);
+
+box-shadow:
+0 8px 20px var(--felios-glow);
+
+}
+
+
+
+.desire-name{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:4px;
+
+    color:var(--felios-text)!important;
+
+    font-size:13px;
+
+    font-weight:500;
+
+}
+
+.desire-name strong{
+
+
+    display:block;
+
+
+    color:var(--felios-primary)!important;
+
+
+    font-size:14px;
+
+
+    font-weight:700;
+
+
+}
+/* Modo oscuro */
+
+[data-mode="dark"] .desire-name{
+
+    color:var(--felios-text)!important;
+
+}
+
+
+
+[data-mode="dark"] .desire-name strong{
+
+
+    color:var(--felios-accent)!important;
+
+
+}
+/* fila superior */
+
+.desire-actions-main{
+
+display:flex;
+
+gap:5px;
+
+}
+
+
+
+.desire-actions-main button{
+
+flex:1;
+
+border:none;
+
+border-radius:8px;
+
+padding:6px 4px;
+
+font-size:11px;
+
+font-weight:700;
+
+color:white;
+
+cursor:pointer;
+
+transition:.2s;
+
+}
+
+
+
+.desire-actions-main button:hover,
+.desire-del:hover{
+
+transform:translateY(-2px);
+
+filter:brightness(1.15);
+
+}
+
+
+
+/* colores */
+
+.desire-done{
+
+background:var(--success);
+
+}
+
+
+
+.desire-edit{
+
+background:var(--edit);
+
+}
+
+
+
+.desire-pay,
+.desire-loan{
+
+background:var(--felios-primary);
+
+}
+
+
+
+/* eliminar abajo */
+
+.desire-del{
+
+width:100%;
+
+margin-top:6px;
+
+border:none;
+
+border-radius:8px;
+
+padding:6px;
+
+font-size:11px;
+
+font-weight:700;
+
+background:var(--danger);
+
+color:white;
+
+cursor:pointer;
+
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+
+@media(max-width:768px){
+
+
+    .account-card {
+
+
+        min-height:
+
+            85px;
+
+
+    }
+
+
+    .card-body {
+
+
+        padding:
+
+            16px;
+
+
+    }
+
+
+    #total-sin-p,
+    #total-deseado,
+    #total-real {
+
+
+        font-size:
+
+            22px;
+
+
+    }
+
+
+}
+/* =====================================================
+   POCKETS MOBILE
+===================================================== */
+
+
+@media(max-width:768px){
+
+
+.salary-card{
+
+
+    flex-direction:column;
+
+
+    align-items:flex-start;
+
+
+    gap:15px;
+
+
+}
+
+
+
+.salary-actions{
+
+
+    width:100%;
+
+
+}
+
+
+
+.salary-actions button{
+
+
+    flex:1;
+
+
+}
+
+
+
+.pocket-card{
+
+
+    padding:15px;
+
+
+}
+
+
+
+.desire-item{
+
+    color:var(--felios-text);
+
+}
+
+
+.desire-actions-main{
+
+
+    gap:4px;
+
+
+}
+
+
+
+.desire-actions-main button{
+
+
+    flex:1;
+
+
+}
+
+
+
+.desire-del{
+
+
+    margin-top:8px;
+
+
+}
+
+
+}
+
+/* =====================================================
+   CAPITAL / BOLSILLO — AJUSTE ACTUAL
+   Debe ir al final para ganar a reglas antiguas.
+===================================================== */
+
+#accounts .account-card {
+    position: relative;
+    min-height: 260px;
+    overflow: visible;
+    border: 1px solid color-mix(in srgb, var(--capital-color, var(--felios-primary)) 48%, var(--felios-border)) !important;
+    box-shadow: 0 12px 30px color-mix(in srgb, var(--capital-color, var(--felios-primary)) 12%, transparent);
+}
+
+#accounts .capital-card,
+#accounts .fixed-pocket-card {
+    background: var(--felios-card) !important;
+}
+
+#accounts .account-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#accounts .account-name {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#accounts .acc-emoji {
+    font-size: 30px;
+}
+
+#accounts .account-type {
+    margin-top: 16px;
+    color: var(--felios-text-soft);
+    font-size: 13px;
+}
+
+#accounts .balance-row {
+    width: 100%;
+    margin-top: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#accounts .balance {
+    font-size: 25px;
+    font-weight: 900;
+}
+
+#accounts .capital-menu {
+    position: absolute;
+    top: 9px;
+    right: 9px;
+    width: 32px;
+    height: 32px;
+    border: 0;
+    border-radius: 10px;
+    background: transparent;
+    color: var(--felios-text-soft);
+    font-size: 22px;
+    line-height: 1;
+    cursor: pointer;
+    z-index: 3;
+}
+
+#accounts .capital-menu:hover {
+    background: var(--felios-panel);
+    color: var(--felios-text);
+    transform: none;
+}
+
+#accounts .edit-balance {
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    border-radius: 50%;
+    border: 1px solid var(--felios-border);
+    background: var(--felios-panel);
+    color: var(--felios-text);
+    cursor: pointer;
+    box-shadow: none;
+}
+
+#accounts .edit-balance:hover {
+    background: var(--felios-primary);
+    color: #fff;
+    transform: none;
+}
+
+#accounts .account-footer {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 14px;
+    display: flex;
+    justify-content: center;
+}
+
+#accounts .sub-pocket-trigger {
+    position: static;
+    width: auto;
+    margin: 0;
+    padding: 6px 10px;
+    border: 0;
+    background: transparent;
+    color: var(--felios-text-soft);
+    font-size: 12px;
+    cursor: pointer;
+}
+
+#accounts .sub-pocket-trigger:hover {
+    color: var(--felios-primary);
+    transform: none;
+}
+
+/* Nuevo capital: misma altura y lenguaje visual, pero punteado. */
+#accounts .add-capital-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 22px;
+    border: 2px dashed var(--felios-border) !important;
+    background: color-mix(in srgb, var(--felios-card) 88%, transparent) !important;
+    cursor: pointer;
+    transition: .22s ease;
+}
+
+#accounts .add-capital-card:hover {
+    border-color: var(--felios-primary) !important;
+    background: color-mix(in srgb, var(--felios-primary) 7%, var(--felios-card)) !important;
+    transform: translateY(-2px);
+}
+
+#accounts .add-capital-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+}
+
+#accounts .account-add-icon {
+    width: 52px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 1px dashed var(--felios-primary);
+    color: var(--felios-primary);
+    font-size: 30px;
+    font-weight: 300;
+}
+
+#accounts .add-capital-card strong {
+    font-size: 17px;
+}
+
+#accounts .add-capital-card small {
+    color: var(--felios-text-soft);
+    font-size: 12px;
+}
+
+/* Menú de tres puntos. */
+#accounts .capital-actions-menu {
+    position: absolute;
+    top: 44px;
+    right: 10px;
+    z-index: 50;
+    min-width: 165px;
+    padding: 6px;
+    border: 1px solid var(--felios-border);
+    border-radius: 14px;
+    background: var(--felios-card);
+    box-shadow: 0 18px 38px rgba(0,0,0,.25);
+}
+
+#accounts .capital-actions-menu button {
+    width: 100%;
+    padding: 9px 10px;
+    border: 0;
+    border-radius: 9px;
+    background: transparent;
+    color: var(--felios-text);
+    text-align: left;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+#accounts .capital-actions-menu button:hover {
+    background: var(--felios-panel);
+    transform: none;
+}
+
+#accounts .capital-action-delete {
+    color: var(--danger) !important;
+}
+
+#accounts .account-separated {
+    margin-top: 8px;
+    font-size: 11px;
+    color: var(--felios-text-soft);
+}
+
+#accounts .fixed-pocket-card {
+    --capital-color: #C8A951;
+}
+
+#accounts .fixed-pocket-info {
+    margin-top: 8px;
+    color: var(--felios-text-soft);
+    font-size: 11px;
+}
+
+@media (max-width: 767px) {
+    #accounts .account-card {
+        min-height: 230px;
+    }
+}
+
+/* =====================================================
+   CAPITAL — AJUSTES FINALES
+===================================================== */
+
+#accounts .capital-card:not(.subpocket-open),
+#accounts .add-capital-card {
+    height: 260px;
+    min-height: 260px;
+    box-sizing: border-box;
+}
+
+#accounts .capital-card.subpocket-open {
+    min-height: 260px;
+    height: auto;
+}
+
+#accounts .add-capital-card {
+    align-self: stretch;
+}
+
+/* El color personalizado afecta visualmente solo al borde/acento de la tarjeta. */
+#accounts .capital-card {
+    border-color: color-mix(
+        in srgb,
+        var(--capital-color, var(--felios-border)) 58%,
+        var(--felios-border)
+    ) !important;
+    box-shadow: 0 12px 30px var(--felios-glow) !important;
+}
+
+/* El botón de editar mantiene el color general de la interfaz. */
+#accounts .edit-balance {
+    background: var(--felios-panel) !important;
+    border-color: var(--felios-border) !important;
+    color: var(--felios-text-soft) !important;
+}
+
+#accounts .edit-balance:hover {
+    background: var(--felios-primary) !important;
+    border-color: var(--felios-primary) !important;
+    color: #fff !important;
+}
+
+/* Divisiones centradas y con el tamaño original. */
+#accounts .account-footer {
+    position: static !important;
+    width: 100%;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center !important;
+    align-items: center;
+}
+
+#accounts .sub-pocket-trigger {
+    width: auto !important;
+    min-height: 30px;
+    margin: 0 !important;
+    padding: 6px 10px !important;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    border: 0 !important;
+    border-radius: 10px;
+    background: transparent !important;
+    color: var(--felios-text-soft) !important;
+    font-size: 12px !important;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+#accounts .sub-pocket-trigger:hover {
+    background: color-mix(in srgb, var(--felios-primary) 8%, transparent) !important;
+    border-color: transparent !important;
+    color: var(--felios-primary) !important;
+}
+
+#accounts .sub-pocket-chevron {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 14px;
+    height: 14px;
+    font-size: 15px;
+    line-height: 1;
+    opacity: .75;
+    transform: rotate(90deg);
+    transition: transform .18s ease;
+}
+
+#accounts .sub-pocket-trigger[aria-expanded="true"] .sub-pocket-chevron {
+    transform: rotate(-90deg);
+}
+
+/* =====================================================
+   ACORDEÓN DE DIVISIONES
+===================================================== */
+
+#accounts .sub-pocket-quick {
+    display: grid;
+    grid-template-rows: 0fr;
+    opacity: 0;
+    max-height: 0;
+    margin-top: 0;
+    overflow: hidden;
+    transition:
+        grid-template-rows .24s ease,
+        max-height .24s ease,
+        opacity .18s ease,
+        margin-top .24s ease;
+}
+
+#accounts .sub-pocket-quick.show {
+    grid-template-rows: 1fr;
+    max-height: 500px;
+    opacity: 1;
+    margin-top: 8px;
+}
+
+#accounts .sub-pocket-quick-list {
+    min-height: 0;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px 12px;
+    border: 1px solid var(--felios-border);
+    border-radius: 14px;
+    background: var(--felios-panel);
+    overflow: hidden;
+}
+
+#accounts .quick-subpocket-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 8px 2px;
+    font-size: 11px;
+}
+
+#accounts .quick-subpocket-name {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    min-width: 0;
+}
+
+#accounts .quick-subpocket-icon {
+    flex: 0 0 auto;
+    font-size: 14px;
+}
+
+#accounts .quick-subpocket-name strong {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+#accounts .quick-subpocket-amount {
+    white-space: nowrap;
+}
+
+#accounts .quick-subpocket-available {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 6px;
+    padding-top: 9px;
+    border-top: 1px solid var(--felios-border);
+    font-size: 11px;
+}
+
+#accounts .quick-subpocket-available strong {
+    color: var(--felios-primary);
+}
+
+#accounts .sub-pocket-quick-empty {
+    padding: 7px 2px 4px;
+    color: var(--felios-text-soft);
+    font-size: 11px;
+    text-align: center;
+}
+
+#accounts .subpocket-open-editor {
+    width: 100%;
+    margin-top: 9px;
+    padding: 8px 10px;
+    border: 1px solid var(--felios-border);
+    border-radius: 10px;
+    background: transparent;
+    color: var(--felios-primary);
+    font-size: 11px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: .18s ease;
+}
+
+#accounts .subpocket-open-editor:hover {
+    background: var(--felios-card);
+    border-color: var(--felios-primary);
+}
+
+@media (max-width: 767px) {
+    #accounts .capital-card:not(.subpocket-open),
+    #accounts .add-capital-card {
+        height: 230px;
+        min-height: 230px;
+    }
+}

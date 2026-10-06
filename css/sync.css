@@ -1,0 +1,26 @@
+/* =====================================================
+   FELIOS ECONOMY — VÍNCULOS BOLSILLO ↔ CAPITAL
+===================================================== */
+.pocket-link-badge{
+  width:100%;display:flex;align-items:center;gap:8px;margin:10px 0 2px;padding:8px 10px;border-radius:12px;
+  border:1px solid color-mix(in srgb,var(--pocket-color,var(--felios-primary)) 35%,var(--felios-border));
+  background:color-mix(in srgb,var(--pocket-color,var(--felios-primary)) 8%,var(--felios-panel));color:var(--felios-text);
+  font-size:.76rem;text-align:left;cursor:pointer;transition:transform .16s ease,border-color .16s ease,background .16s ease;
+}
+.pocket-link-badge:hover{transform:translateY(-1px);border-color:color-mix(in srgb,var(--pocket-color,var(--felios-primary)) 60%,var(--felios-border));}
+.pocket-link-badge span:nth-child(2){min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1;font-weight:700;}
+.pocket-link-badge b{font-size:.68rem;color:var(--edit);white-space:nowrap;}
+.pocket-link-badge.pending{border-color:color-mix(in srgb,var(--edit) 55%,var(--felios-border));background:color-mix(in srgb,var(--edit) 8%,var(--felios-panel));}
+.pocket-link-badge.broken{border-color:color-mix(in srgb,var(--danger) 55%,var(--felios-border));color:var(--danger);}
+.subpocket-link-badge{display:inline-flex;align-items:center;gap:4px;margin-top:4px;padding:3px 7px;border-radius:999px;background:color-mix(in srgb,var(--felios-primary) 9%,transparent);border:1px solid color-mix(in srgb,var(--felios-primary) 22%,var(--felios-border));font-size:.67rem!important;color:var(--felios-text-soft)!important;font-weight:700;}
+.subpocket-link-badge.pending{color:var(--edit)!important;border-color:color-mix(in srgb,var(--edit) 40%,var(--felios-border));}
+.quick-subpocket-link{display:block;margin-top:3px;font-size:.65rem;color:var(--felios-text-soft);font-weight:700;}
+.link-intro{display:flex;align-items:center;gap:14px;padding:14px;border:1px solid var(--felios-border);border-radius:16px;background:color-mix(in srgb,var(--felios-card) 80%,transparent);margin-bottom:15px;}
+.link-intro>span{width:48px;height:48px;display:grid;place-items:center;border-radius:15px;background:color-mix(in srgb,var(--felios-primary) 12%,var(--felios-panel));font-size:1.5rem;}
+.link-intro div{min-width:0}.link-intro small{display:block;color:var(--felios-text-soft);font-size:.65rem;letter-spacing:.12em;font-weight:800}.link-intro strong{display:block;font-size:1rem}.link-intro p{margin:2px 0 0;color:var(--felios-text-soft);font-size:.8rem}
+.link-fields{margin-bottom:12px}.link-new-box{padding:12px;border:1px dashed var(--felios-border);border-radius:14px;margin-bottom:12px}.link-new-box[hidden]{display:none!important}
+.link-preview{margin-top:8px}.link-preview-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-bottom:10px}.link-preview-grid>div{padding:10px;border-radius:12px;background:color-mix(in srgb,var(--felios-card) 80%,transparent);border:1px solid var(--felios-border)}.link-preview-grid span{display:block;color:var(--felios-text-soft);font-size:.67rem}.link-preview-grid strong{display:block;margin-top:3px;font-size:.86rem;overflow:hidden;text-overflow:ellipsis}
+.link-actions{flex-wrap:wrap}.danger-soft{color:var(--danger)!important;border-color:color-mix(in srgb,var(--danger) 35%,var(--felios-border))!important}
+.link-empty{text-align:center;padding:24px 12px}.link-empty>span{font-size:2rem}.link-empty strong{display:block;margin-top:8px}.link-empty p{color:var(--felios-text-soft);font-size:.82rem}
+.subpocket-linked-note{margin:8px 0 0;padding:8px 10px;border-radius:11px;background:color-mix(in srgb,var(--felios-primary) 8%,var(--felios-panel));border:1px solid color-mix(in srgb,var(--felios-primary) 20%,var(--felios-border));font-size:.72rem;color:var(--felios-text-soft)}
+@media(max-width:640px){.link-preview-grid{grid-template-columns:1fr}.link-actions>*{flex:1 1 auto}.pocket-link-badge{font-size:.72rem}}

@@ -1,0 +1,599 @@
+/* =====================================================
+   FELIOS ECONOMY
+   THEMES SYSTEM
+
+   Temas:
+   🏠 Hogareño
+   🌅 Amanecer
+   🌇 Atardecer
+   🌌 Anochecer
+   🌱 FeliOS
+
+   Variables:
+   - interfaz
+   - botones
+   - menú de temas
+===================================================== */
+
+
+
+/* =====================================================
+   HOGAREÑO
+===================================================== */
+
+
+[data-theme="home"] {
+
+
+    --felios-bg:#F5EEE7;
+    --felios-panel:#E8D8CA;
+    --felios-card:#FFFDFC;
+
+    --felios-border:#D7BFAE;
+
+    --felios-text:#35261E;
+    --felios-text-soft:#80695A;
+
+
+    --felios-primary:#A8663F;
+    --felios-accent:#D59A55;
+
+
+    --felios-glow:
+    rgba(168,102,63,.20);
+
+
+
+    --success:#669261;
+    --danger:#C06565;
+    --edit:#C58F52;
+    --add:#AA7140;
+
+
+
+    /* preview menu */
+
+    --theme-preview-bg:#FFFDFC;
+    --theme-preview-border:#A8663F;
+
+
+}
+/* Ajuste automático modo oscuro */
+
+
+.theme-item{
+
+display:flex;
+
+align-items:center;
+
+gap:14px;
+
+padding:12px 14px;
+
+min-height:60px;
+
+border-radius:14px;
+
+cursor:pointer;
+
+background:
+
+var(--felios-panel);
+
+
+border:
+
+1px solid
+var(--theme-color);
+
+
+color:
+
+var(--felios-text);
+
+
+position:relative;
+
+overflow:hidden;
+
+transition:.25s ease;
+
+}
+/* ==============================
+   AJUSTE MENU EN MODO OSCURO
+============================== */
+
+
+
+[data-mode="dark"] .theme-menu{
+
+
+background:
+
+color-mix(
+in srgb,
+var(--felios-bg) 80%,
+black
+);
+
+
+
+border-color:
+
+var(--felios-border);
+
+
+
+box-shadow:
+
+0 20px 50px rgba(0,0,0,.65);
+
+
+
+}
+
+
+
+.theme-item::before{
+
+
+    content:"";
+
+
+    position:absolute;
+
+
+    left:0;
+
+
+    top:0;
+
+
+    width:5px;
+
+
+    height:100%;
+
+
+    background:
+
+    var(--theme-preview-border);
+
+
+}
+
+.theme-item.active{
+
+
+border:
+
+2px solid
+var(--theme-color);
+
+
+background:
+
+color-mix(
+in srgb,
+var(--theme-color) 15%,
+var(--felios-panel)
+);
+
+
+box-shadow:
+
+0 0 20px
+var(--felios-glow);
+
+
+}
+
+[data-theme="home"][data-mode="dark"] {
+
+
+    --felios-bg:#241B17;
+    --felios-panel:#30231D;
+    --felios-card:#3B2B23;
+
+    --felios-border:#594235;
+
+
+    --felios-text:#FFF2E6;
+    --felios-text-soft:#D1B7A4;
+
+
+    --felios-primary:#D18A4C;
+    --felios-accent:#E7B56A;
+
+
+    --felios-glow:
+    rgba(209,138,76,.30);
+
+
+
+    --success:#6F9E6A;
+    --danger:#C96B6B;
+    --edit:#D59A55;
+    --add:#B77942;
+
+
+
+    --theme-preview-bg:#30231D;
+    --theme-preview-border:#D18A4C;
+
+
+}
+
+
+
+
+
+/* =====================================================
+   AMANECER
+===================================================== */
+
+
+[data-theme="sunrise"] {
+
+
+    --felios-bg:#FFF8F3;
+    --felios-panel:#FFE9D6;
+    --felios-card:#FFFDFC;
+
+
+    --felios-border:#F1DBC7;
+
+
+    --felios-text:#39322A;
+    --felios-text-soft:#928D75;
+
+
+
+    --felios-primary:#F4A261;
+    --felios-accent:#E9C46A;
+
+
+    --felios-glow:
+    rgba(244,162,97,.20);
+
+
+
+    --success:#72B58B;
+    --danger:#D97A7A;
+    --edit:#E9A857;
+    --add:#F4A261;
+
+
+
+    --theme-preview-bg:#FFE9D6;
+    --theme-preview-border:#F4A261;
+
+
+}
+
+
+
+
+
+[data-theme="sunrise"][data-mode="dark"] {
+
+
+    --felios-bg:#211A1A;
+    --felios-panel:#342625;
+    --felios-card:#402E2C;
+
+
+    --felios-border:#604C48;
+
+
+    --felios-text:#FFEAF5;
+    --felios-text-soft:#D1C8AF;
+
+
+
+    --felios-primary:#F6B26B;
+    --felios-accent:#E8A87C;
+
+
+
+    --felios-glow:
+    rgba(246,178,107,.25);
+
+
+
+    --success:#69C28B;
+    --danger:#F08080;
+    --edit:#F6B26B;
+    --add:#E8A87C;
+
+
+
+    --theme-preview-bg:#342625;
+    --theme-preview-border:#F6B26B;
+
+
+}
+
+
+
+
+
+/* =====================================================
+   ATARDECER
+===================================================== */
+
+
+[data-theme="sunset"] {
+
+
+    --felios-bg:#FFF3E8;
+    --felios-panel:#FFE0C7;
+    --felios-card:#FFFFFF;
+
+
+    --felios-border:#F2BE92;
+
+
+    --felios-text:#3B241A;
+    --felios-text-soft:#916650;
+
+
+    --felios-primary:#D95D2B;
+    --felios-accent:#FF9F43;
+
+
+    --felios-glow:
+    rgba(217,93,43,.22);
+
+
+
+    --success:#3FA36C;
+    --danger:#D65A5A;
+    --edit:#D6A85F;
+    --add:#D95D2B;
+
+
+
+    --theme-preview-bg:#FFE0C7;
+    --theme-preview-border:#D95D2B;
+
+
+}
+
+
+
+
+
+[data-theme="sunset"][data-mode="dark"] {
+
+
+    --felios-bg:#1E1513;
+    --felios-panel:#30201B;
+    --felios-card:#42261D;
+
+
+    --felios-border:#704334;
+
+
+    --felios-text:#FFE8D6;
+    --felios-text-soft:#D5AA91;
+
+
+
+    --felios-primary:#FF7849;
+    --felios-accent:#FFB45C;
+
+
+
+    --felios-glow:
+    rgba(255,120,73,.30);
+
+
+
+    --success:#55C47A;
+    --danger:#FF7676;
+    --edit:#E7B86A;
+    --add:#FF7849;
+
+
+
+    --theme-preview-bg:#30201B;
+    --theme-preview-border:#FF7849;
+
+
+}
+
+
+
+
+
+/* =====================================================
+   ANOCHECER
+===================================================== */
+
+
+[data-theme="night"] {
+
+
+    --felios-bg:#F3F5FF;
+    --felios-panel:#E8ECFF;
+    --felios-card:#FFFFFF;
+
+
+    --felios-border:#CBD5FF;
+
+
+    --felios-text:#202447;
+    --felios-text-soft:#68729A;
+
+
+
+    --felios-primary:#6366F1;
+    --felios-accent:#818CF8;
+
+
+    --felios-glow:
+    rgba(99,102,241,.25);
+
+
+
+    --success:#3FA36C;
+    --danger:#D65A5A;
+    --edit:#D6A85F;
+    --add:#6366F1;
+
+
+
+    --theme-preview-bg:#E8ECFF;
+    --theme-preview-border:#6366F1;
+
+
+}
+
+
+
+
+
+[data-theme="night"][data-mode="dark"] {
+
+
+    --felios-bg:#101522;
+    --felios-panel:#151C2E;
+    --felios-card:#192033;
+
+
+    --felios-border:#334155;
+
+
+    --felios-text:#E8EEFF;
+    --felios-text-soft:#AAB8D6;
+
+
+
+    --felios-primary:#8B5CF6;
+    --felios-accent:#38BDF8;
+
+
+
+    --felios-glow:
+    rgba(139,92,246,.40);
+
+
+
+    --success:#55C47A;
+    --danger:#FF7676;
+    --edit:#E7B86A;
+    --add:#8B5CF6;
+
+
+
+    --theme-preview-bg:#151C2E;
+    --theme-preview-border:#8B5CF6;
+
+
+}
+
+
+
+
+
+/* =====================================================
+   FELIOS
+===================================================== */
+
+
+[data-theme="felios"] {
+
+
+    --felios-bg:#F6F1EA;
+    --felios-panel:#EEE5DA;
+    --felios-card:#FFFBF5;
+
+
+    --felios-border:#D8C5A5;
+
+
+    --felios-text:#29231F;
+    --felios-text-soft:#75695F;
+
+
+
+    --felios-primary:#C8A951;
+    --felios-accent:#E8D28A;
+
+
+
+    --felios-glow:
+    rgba(200,169,81,.25);
+
+
+
+    --success:#7BAE7F;
+    --danger:#C86B6B;
+    --edit:#C8A951;
+    --add:#D59A55;
+
+
+
+    --theme-preview-bg:#EEE5DA;
+    --theme-preview-border:#C8A951;
+
+
+}
+
+
+
+
+
+[data-theme="felios"][data-mode="dark"] {
+
+
+    --felios-bg:#171717;
+    --felios-panel:#202020;
+    --felios-card:#292929;
+
+
+    --felios-border:#444;
+
+
+    --felios-text:#FFFFFF;
+    --felios-text-soft:#CCCCCC;
+
+
+
+    --felios-primary:#C8A951;
+    --felios-accent:#E8D28A;
+
+
+
+    --felios-glow:
+    rgba(200,169,81,.35);
+
+
+
+    --success:#65B87A;
+    --danger:#E06C6C;
+    --edit:#C8A951;
+    --add:#E8D28A;
+
+
+
+    --theme-preview-bg:#202020;
+    --theme-preview-border:#C8A951;
+
+
+}
+[data-mode="dark"] .theme-item.active {
+
+
+    background:
+
+        color-mix(
+            in srgb,
+            var(--theme-bg) 85%,
+            rgb(226, 222, 222)
+        );
+
+
+}

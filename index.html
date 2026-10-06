@@ -1,623 +1,98 @@
 <!DOCTYPE html>
-<html lang="es" data-theme="light">
+<html lang="es" data-theme="home" data-mode="light">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Gestor de Gastos COP</title>
+  <!-- Bootstrap -->
+<link
+href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+rel="stylesheet"
+/>
 
-  <!-- Bootstrap CSS -->
-  <link
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-    rel="stylesheet"
-  />
+<!-- Toastify -->
+<link
+rel="stylesheet"
+href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
+/>
 
-  <!-- Toastify CSS -->
-  <link
-    rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
-  />
+<!-- Bootstrap Icons -->
+<link
+rel="stylesheet"
+href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+/>
 
-  <!-- Iconos (Bootstrap Icons) -->
-  <link
-    rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
-  />
 
-<style>
-  /* =============================
-   VARIABLES CSS PARA TEMAS
-   ============================= */
-:root {
-  /* Colores globales */
-  --bs-body-bg: #f8f5f0;           /* Fondo claro (ligeramente beige) */
-  --bs-body-color: #3e2723;        /* Texto café oscuro */
+<!-- FeliOS CSS -->
+<link rel="stylesheet" href="./css/themes.css">
 
-  --card-bg: #ffffff;              /* Fondo de cards en claro */
-  --card-border: #e0dcd7;          /* Borde suave */
-  --card-color: #3e2723;           /* Texto dentro de cards */
+<link rel="stylesheet" href="./css/style.css">
 
-  --primary-color: #d2691e;        /* Terracota principal para botones/íconos */
-  --secondary-color: #8d6e63;      /* Marrón medio para elementos secundarios */
-  --success-color: #2e7d32;        /* Verde para “Hecho” */
-  --info-color: #d2691e;           /* Terracota (usado en algunas acciones) */
-  --warning-color: #d99058;        /* Naranja suave para alertas secundarias */
-  --danger-color: #c62828;         /* Rojo intenso para eliminar */
+<link rel="stylesheet" href="./css/cards.css">
 
-  --list-bg: #ffffff;              /* Fondo de listas en claro */
-  --list-border: #e0dcd7;          /* Borde de listas */
+<link rel="stylesheet" href="./css/themes-menu.css">
 
-  --btn-outline-color: var(--primary-color);
+<link rel="stylesheet" href="./css/modal.css">
 
-  /* Cuenta “Físico” (efectivo) */
-  --acc1-bg: #6d4c41;              /* Marrón oscuro */
-  --acc1-text: #ffffff;            /* Texto blanco */
-
-  /* Cuenta “Nequi” (ligeramente adaptado) */
-  --acc2-bg: #1f0020;              /* Negruzco con matiz púrpura */
-  --acc2-text: #db0082;            /* Magenta secundario */
-  
-  /* Cuenta “Lulo” */
-  --acc3-bg: #1f2639;              /* Azul oscuro casi negro */
-  --acc3-text: #e5ff00;            /* Amarillo neón secundario */
-
-  /* Cuenta “Bolsillo” */
-  --acc4-bg: #cbaa5d;              /* Amarillo mostaza suave */
-  --acc4-text: #3e2723;            /* Café oscuro */
-  
-  /* Scrollbar */
-  --scrollbar-thumb: #8d6e63;      /* Marrón medio */
-  --scrollbar-track: #f8f5f0;
-}
-
-[data-theme='dark'] {
-  /* Fondo y texto global */
-  --bs-body-bg: #2b2723;           /* Café muy oscuro */
-  --bs-body-color: #d7ccc8;        /* Beige suave */
-
-  --card-bg: #3e332d;              /* Card café oscuro */
-  --card-border: #4e3f36;          /* Borde café medio */
-  --card-color: #d7ccc8;           /* Texto beige dentro de cards */
-
-  /* Mantener primary/terracota igual para contraste */
-  --primary-color: #d2691e;
-  --secondary-color: #b08b72;      /* Marrón suave para oscuro */
-  --success-color: #2e7d32;
-  --info-color: #d2691e;
-  --warning-color: #d99058;
-  --danger-color: #c62828;
-
-  --list-bg: #3e332d;              /* Listas café oscuro */
-  --list-border: #4e3f36;
-
-  --btn-outline-color: var(--primary-color);
-
-  /* Cuenta “Físico” */
-  --acc1-bg: #5d4037;
-  --acc1-text: #ffffff;
-
-  /* Cuenta “Nequi” */
-  --acc2-bg: #381a38;              /* Morado muy oscuro */
-  --acc2-text: #f48fb1;            /* Rosa suave */
-
-  /* Cuenta “Lulo” */
-  --acc3-bg: #243044;              /* Azul fosco */
-  --acc3-text: #ffff8d;            /* Amarillo pastel */
-
-  /* Cuenta “Bolsillo” */
-  --acc4-bg: #d4b17a;
-  --acc4-text: #2b2723;
-
-  /* Scrollbar */
-  --scrollbar-thumb: #b08b72;
-  --scrollbar-track: #3e332d;
-}
-
-/* =============================
-   GLOBALES
-   ============================= */
-html,
-body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  background-color: var(--bs-body-bg);
-  color: var(--bs-body-color);
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-body {
-  background-color: var(--bs-body-bg) !important;
-  color: var(--bs-body-color) !important;
-}
-
-/* Forzar que Bootstrap use nuestras variables */
-.bg-light {
-  background-color: var(--card-bg) !important;
-}
-.text-muted {
-  color: var(--secondary-color) !important;
-}
-
-/* =============================
-   NAVBAR
-   ============================= */
-.navbar {
-  background-color: var(--card-bg) !important;
-  border-bottom: 1px solid var(--card-border);
-}
-.navbar-brand {
-  color: var(--primary-color) !important;
-  font-weight: bold;
-}
-.navbar-brand:hover {
-  color: var(--primary-color);
-}
-.navbar .btn-outline-secondary {
-  color: var(--btn-outline-color);
-  border-color: var(--btn-outline-color);
-}
-.navbar .btn-outline-secondary:hover {
-  background-color: var(--btn-outline-color);
-  color: var(--card-bg);
-}
-
-/* =============================
-   CARD GENERAL
-   ============================= */
-.card {
-  background-color: var(--card-bg) !important;
-  border: 1px solid var(--card-border) !important;
-  color: var(--card-color) !important;
-  border-radius: 0.5rem;
-}
-.card-header {
-  background-color: var(--card-bg) !important;
-  border-bottom: 1px solid var(--card-border) !important;
-}
-.card-footer {
-  background-color: var(--card-bg) !important;
-  border-top: 1px solid var(--card-border) !important;
-}
-h5,
-h4,
-h6 {
-  color: var(--bs-body-color) !important;
-}
-
-/* =============================
-   LIST GROUP
-   ============================= */
-.list-group {
-  background-color: var(--list-bg) !important;
-  border: 1px solid var(--list-border) !important;
-  border-radius: 0.5rem;
-}
-.list-group-item {
-  background-color: var(--list-bg) !important;
-  border-bottom: 1px solid var(--list-border) !important;
-  color: var(--bs-body-color) !important;
-}
-.list-group-item:last-child {
-  border-bottom: none;
-}
-
-/* =============================
-   BOTONES
-   ============================= */
-/* Botón primario terracota */
-.btn-primary {
-  background-color: var(--primary-color) !important;
-  border-color: var(--primary-color) !important;
-  color: #fff !important;
-}
-.btn-primary:hover {
-  background-color: #b45418 !important;
-  border-color: #b45418 !important;
-}
-
-/* Botón de “Hecho” (verde) */
-.btn-success {
-  background-color: var(--success-color) !important;
-  border-color: var(--success-color) !important;
-  color: #fff !important;
-}
-.btn-success:hover {
-  background-color: #276b2a !important;
-  border-color: #276b2a !important;
-}
-
-/* Botón “Eliminar” (rojo) */
-.btn-danger {
-  background-color: var(--danger-color) !important;
-  border-color: var(--danger-color) !important;
-  color: #fff !important;
-}
-.btn-danger:hover {
-  background-color: #a71f1f !important;
-  border-color: #a71f1f !important;
-}
-
-/* Botón “Ver Historial” / Info (usa terracota) */
-.btn-outline-info {
-  color: var(--info-color) !important;
-  border-color: var(--info-color) !important;
-}
-.btn-outline-info:hover {
-  background-color: var(--info-color) !important;
-  color: #fff !important;
-}
-
-/* Botón secundario (outline marrón suave) */
-.btn-outline-secondary {
-  color: var(--secondary-color) !important;
-  border-color: var(--secondary-color) !important;
-}
-.btn-outline-secondary:hover {
-  background-color: var(--secondary-color) !important;
-  color: #fff !important;
-}
-
-/* “+10 000 Regalo” igual que botones primarios */
-.add-regalo {
-  background-color: var(--primary-color) !important;
-  border-color: var(--primary-color) !important;
-  color: #fff !important;
-}
-.add-regalo:hover {
-  background-color: #b45418 !important;
-  border-color: #b45418 !important;
-}
-
-/* Botones “Abonar” y “Préstamo”: marrón medio */
-.desire-pay,
-.desire-loan {
-  background-color: var(--secondary-color) !important;
-  border-color: var(--secondary-color) !important;
-  color: #fff !important;
-}
-.desire-pay:hover,
-.desire-loan:hover {
-  background-color: #7d5c52 !important;
-  border-color: #7d5c52 !important;
-}
-
-/* Tamaño compacto para casi todos los botones */
-.btn-sm {
-  padding: 0.25rem 0.5rem;
-  font-size: 0.85rem;
-  border-radius: 0.375rem;
-}
-
-/* =============================
-   FORM CONTROLS
-   ============================= */
-.form-control,
-.form-select {
-  background-color: var(--card-bg) !important;
-  color: var(--bs-body-color) !important;
-  border: 1px solid var(--card-border) !important;
-  border-radius: 0.375rem;
-}
-.form-control:focus,
-.form-select:focus {
-  border-color: var(--primary-color) !important;
-  box-shadow: 0 0 0 0.2rem rgba(210, 105, 30, 0.25) !important;
-}
-input[type='date']::-webkit-calendar-picker-indicator {
-  filter: invert(0.6);
-}
-
-/* =============================
-   CUENTAS (account-card)
-   ============================= */
-.account-card .card-body {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.75rem 1rem;
-}
-
-/* 1) “Físico” */
-.acc-1 {
-  background-color: var(--acc1-bg) !important;
-  color: var(--acc1-text) !important;
-}
-.acc-1 .acc-emoji::before {
-  content: "💵 ";
-}
-
-/* 2) “Nequi” */
-.acc-2 {
-  background-color: var(--acc2-bg) !important;
-  color: var(--acc2-text) !important;
-}
-.acc-2 .acc-emoji::before {
-  content: "🟢 ";
-}
-
-/* 3) “Lulo” */
-.acc-3 {
-  background-color: var(--acc3-bg) !important;
-  color: var(--acc3-text) !important;
-}
-.acc-3 .acc-emoji::before {
-  content: "🍈 ";
-}
-
-/* 4) “Bolsillo” */
-.acc-4 {
-  background-color: var(--acc4-bg) !important;
-  color: var(--acc4-text) !important;
-}
-.acc-4 .acc-emoji::before {
-  content: "👜 ";
-}
-
-/* Texto y saldo */
-.account-card .balance {
-  font-size: 1.25rem;
-  font-weight: bold;
-}
-
-/* Botón de editar en cuenta */
-.account-card .edit-account {
-  background: rgba(255, 255, 255, 0.2);
-  border: none;
-  color: #fff;
-  font-size: 1rem;
-  width: 1.5rem;
-  height: 1.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 0.375rem;
-}
-.account-card .edit-account:hover {
-  background: rgba(255, 255, 255, 0.35);
-}
-
-/* =============================
-   SUB‐LIST (deudas/créditos)
-   ============================= */
-.sub-list {
-  margin: 0;
-  padding: 0;
-}
-.sub-list .list-group-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.5rem 1rem;
-  background-color: var(--list-bg) !important;
-  border: 1px solid var(--list-border) !important;
-  border-radius: 0.375rem;
-  margin: 0.25rem 1rem;
-}
-
-/* Botones dentro de sub-list */
-.sub-done {
-  background: none;
-  border: none;
-  font-size: 1rem;
-  color: var(--success-color);
-}
-.sub-delete {
-  background: none;
-  border: none;
-  font-size: 1rem;
-  color: var(--danger-color);
-}
-.sub-edit {
-  background: none;
-  border: none;
-  font-size: 1rem;
-  color: var(--secondary-color);
-}
-
-/* =============================
-   TOTALES GENERALES (cards)
-   ============================= */
-.clickable {
-  cursor: pointer;
-}
-.clickable:hover {
-  text-decoration: underline;
-}
-
-/* =============================
-   BOLSILLOS (pocket-card)
-   ============================= */
-.pocket-card {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  border-radius: 0.5rem;
-  padding: 0; /* Reducido */
-}
-.pocket-card .card-body {
-  display: flex;
-  flex-direction: column;
-  padding: 0.75rem 1rem;
-}
-.pocket-header {
-  font-weight: bold;
-  font-size: 1rem;
-  margin-bottom: 0.5rem;
-}
-.pocket-card .small {
-  font-size: 0.875rem;
-  color: var(--secondary-color);
-  margin-bottom: 0.25rem;
-}
-/* Botón “+ Agregar deseo” */
-.add-desire {
-  background-color: var(--primary-color) !important;
-  border-color: var(--primary-color) !important;
-  color: #fff !important;
-  margin-top: 0.5rem;
-  border-radius: 0.375rem;
-  font-size: 0.9rem;
-}
-/* Botón “+10 000 Regalo” ya sobreescrito arriba */
-
-/* Lista de deseos: cada elemento ocupa full ancho y apila vertical */
-.pocket-desires {
-  list-style: none;
-  padding: 0;
-  margin-top: 0.5rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  max-height: 200px;
-  overflow-y: auto;
-}
-.pocket-desires li {
-  display: flex;
-  flex-direction: column;
-  background-color: var(--list-bg) !important;
-  border: 1px solid var(--list-border) !important;
-  border-radius: 0.375rem;
-  padding: 0.5rem;
-}
-.pocket-desires li span {
-  font-size: 0.9rem;
-  color: var(--bs-body-color);
-  margin-bottom: 0.5rem;
-}
-
-/* Grupo de botones dentro de cada deseo */
-.pocket-desires .btn-group {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.25rem;
-}
-.pocket-desires .btn-group .btn {
-  font-size: 0.75rem;
-  padding: 0.25rem 0.4rem;
-  border-radius: 0.375rem;
-}
-
-/* =============================
-   HISTORIAL DE MOVIMIENTOS
-   ============================= */
-/* Fondo del modal heredado del card */
-#modalHistory .modal-content {
-  background-color: var(--card-bg) !important;
-  color: var(--card-color) !important;
-}
-/* List items: usar colores según tipo */
-#history-list .list-group-item {
-  background-color: var(--list-bg) !important;
-  border-bottom: 1px solid var(--list-border) !important;
-  color: var(--bs-body-color) !important;
-}
-/* Resta */
-#history-list .text-danger {
-  color: var(--danger-color) !important;
-}
-/* Suma */
-#history-list .text-success {
-  color: var(--success-color) !important;
-}
-/* Edición (asignamos clase .text-edicion en JS—ver nota abajo) */
-#history-list .text-edicion {
-  color: var(--secondary-color) !important;
-}
-
-/* =============================
-   MODAL BREAKDOWN
-   ============================= */
-#modalBreakdown .modal-content {
-  background-color: var(--card-bg) !important;
-  color: var(--card-color) !important;
-}
-#breakdown-table {
-  color: var(--bs-body-color) !important;
-  margin: 0;
-}
-#breakdown-table th {
-  background-color: var(--card-bg) !important;
-  color: var(--bs-body-color) !important;
-  border-bottom: 1px solid var(--list-border) !important;
-}
-#breakdown-table td {
-  background-color: var(--list-bg) !important;
-  border-bottom: 1px solid var(--list-border) !important;
-}
-
-/* =============================
-   SCROLLBARS PERSONALIZADAS
-   ============================= */
-ul::-webkit-scrollbar {
-  width: 6px;
-}
-ul::-webkit-scrollbar-track {
-  background: var(--scrollbar-track);
-}
-ul::-webkit-scrollbar-thumb {
-  background-color: var(--scrollbar-thumb);
-  border-radius: 3px;
-}
-
-/* =============================
-   AJUSTES RESPONSIVOS
-   ============================= */
-@media (max-width: 768px) {
-  .pocket-desires li {
-    width: 100%;
-  }
-}
-/* Botón “Exportar JSON” */
-#btn-export {
-  background-color: var(--secondary-color) !important;
-  border-color: var(--secondary-color) !important;
-  color: #fff !important;
-}
-#btn-export:hover {
-  background-color: #7d5c52 !important; /* Más oscuro para hover */
-  border-color: #7d5c52 !important;
-}
-
-/* Botón “Editar Sueldo Actual” */
-#edit-sueldo {
-  background-color: var(--secondary-color) !important;
-  border-color: var(--secondary-color) !important;
-  color: #fff !important;
-}
-#edit-sueldo:hover {
-  background-color: #7d5c52 !important;
-  border-color: #7d5c52 !important;
-}
-</style>
+<link rel="stylesheet" href="./css/pockets-v2.css">
+<link rel="stylesheet" href="./css/sync.css">
+<link rel="stylesheet" href="./css/debts-v2.css">
+<link rel="stylesheet" href="./css/graphs.css">
+<link rel="stylesheet" href="./css/final-polish.css">
 </head>
 <body>
   <!-- Navbar y Toggle de Tema -->
   <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
     <div class="container-fluid">
-      <a class="navbar-brand fw-bold" href="#">
-        <i class="bi bi-wallet2"></i> Gestor de Gastos
-      </a>
-      <div class="d-flex align-items-center">
-        <button id="theme-toggle" class="btn btn-outline-secondary btn-sm me-3">
-          <i class="bi bi-moon-fill"></i>
-        </button>
-        <div class="btn-group">
-        <button id="btn-export" class="btn btn-outline-primary btn-sm">
-          <i class="bi bi-cloud-arrow-up"></i>
-          Exportar JSON
-        </button>
+<a class="navbar-brand felios-brand" href="#" id="felios-home-link" title="Volver arriba">
+    💰 <span>Gestor de Gastos</span>
+</a>
+      <div class="nav-actions">
+<div class="nav-primary-tools" aria-label="Acciones rápidas">
+<button id="btn-quick-actions" class="nav-icon-btn primary" type="button" title="Acciones rápidas"><i class="bi bi-plus-lg"></i><span>Nuevo</span></button>
+<button id="btn-nav-history" class="nav-icon-btn" type="button" title="Abrir historial"><i class="bi bi-clock-history"></i><span>Historial</span></button>
+<button id="btn-settings" class="nav-icon-btn" type="button" title="Configuración"><i class="bi bi-sliders"></i><span>Ajustes</span></button>
+</div>
+<!-- Modo claro / oscuro -->
+<button 
+    id="mode-toggle"
+    class="btn btn-outline-secondary btn-sm me-2"
+    title="Cambiar modo">
+
+    <span id="theme-icon">
+        🌙
+    </span>
+
+</button>
 
 
-        <button id="btn-copy-felios" class="btn btn-outline-success btn-sm">
-          🧠 Copiar para FeliOS
-        </button>
+<!-- Selector de temas -->
+<button
+    id="themes-button"
+    class="btn btn-outline-secondary btn-sm me-3"
+>
+    🎨 Temas
+</button>
+<div class="nav-group">
+
+<button id="btn-export" class="nav-btn">
+<i class="bi bi-cloud-arrow-up"></i>
+Exportar JSON
+</button>
 
 
-        <button id="btn-import" class="btn btn-outline-secondary btn-sm">
-          <i class="bi bi-cloud-arrow-down"></i>
-          Importar JSON
-        </button>
+<button id="btn-copy-felios" class="nav-btn primary">
+🧠 Copiar para FeliOS
+</button>
 
-      </div>
+
+<button id="btn-import" class="nav-btn">
+<i class="bi bi-cloud-arrow-down"></i>
+Importar JSON
+</button>
+
+</div>
+<button id="btn-mobile-menu" class="nav-mobile-more" type="button" title="Más opciones"><i class="bi bi-three-dots"></i></button>
         <input type="file" id="file-input" accept=".json" style="display: none" />
       </div>
     </div>
@@ -629,54 +104,51 @@ ul::-webkit-scrollbar-thumb {
     <div id="accounts" class="row g-3 mb-4"></div>
 
     <!-- Deudas y Créditos -->
-    <div class="row mb-4 g-4">
-      <div class="col-md-6">
-        <div class="card shadow-sm h-100">
-          <div class="card-header d-flex justify-content-between align-items-center">
-            <h5 class="mb-0"><i class="bi bi-arrow-down-circle text-danger"></i> Deudas que debo</h5>
-            <button id="add-debt" class="btn btn-sm btn-success">
-              <i class="bi bi-plus-lg"></i>
-            </button>
-          </div>
-          <div class="card-body px-0">
-            <ul id="debts-list" class="list-group list-group-flush"></ul>
-          </div>
-          <div class="card-footer bg-transparent border-0">
-            <div class="d-flex justify-content-end">
-              <span class="fw-semibold">Total Deudas:</span>
-              <span id="sum-deudas" class="ms-2 text-danger fw-bold">COP 0,00</span>
-            </div>
-          </div>
-        </div>
-      </div>
+    <section class="debt-section mb-4">
+      <div class="debt-overview-grid">
 
-      <div class="col-md-6">
-        <div class="card shadow-sm h-100">
-          <div class="card-header d-flex justify-content-between align-items-center">
-            <h5 class="mb-0"><i class="bi bi-arrow-up-circle text-success"></i> Deudas que me deben</h5>
-            <button id="add-credit" class="btn btn-sm btn-success">
-              <i class="bi bi-plus-lg"></i>
-            </button>
-          </div>
-          <div class="card-body px-0">
-            <ul id="credits-list" class="list-group list-group-flush"></ul>
-          </div>
-          <div class="card-footer bg-transparent border-0">
-            <div class="d-flex justify-content-end">
-              <span class="fw-semibold">Total Me Deben:</span>
-              <span id="sum-credits" class="ms-2 text-success fw-bold">COP 0,00</span>
+        <article class="debt-panel debt-panel-debt">
+          <header class="debt-panel-head">
+            <div>
+              <small>OBLIGACIONES</small>
+              <h5><span class="debt-panel-symbol">↓</span> Deudas que debo</h5>
+              <p id="debts-summary-meta">0 personas · 0 deudas</p>
             </div>
+            <button id="add-debt" class="debt-add-button" type="button" aria-label="Agregar deuda">＋</button>
+          </header>
+          <div class="debt-panel-total">
+            <span>Pendiente</span>
+            <strong id="sum-deudas">COP 0,00</strong>
           </div>
-        </div>
+          <div id="debts-list" class="debt-groups"></div>
+        </article>
+
+        <article class="debt-panel debt-panel-credit">
+          <header class="debt-panel-head">
+            <div>
+              <small>POR COBRAR</small>
+              <h5><span class="debt-panel-symbol">↑</span> Deudas que me deben</h5>
+              <p id="credits-summary-meta">0 personas · 0 cobros</p>
+            </div>
+            <button id="add-credit" class="debt-add-button" type="button" aria-label="Agregar dinero por cobrar">＋</button>
+          </header>
+          <div class="debt-panel-total">
+            <span>Pendiente</span>
+            <strong id="sum-credits">COP 0,00</strong>
+          </div>
+          <div id="credits-list" class="debt-groups"></div>
+        </article>
+
       </div>
-    </div>
+    </section>
 
     <!-- Totales Generales -->
     <div class="row mb-5">
       <div class="col-md-4 mb-3">
         <div class="card shadow-sm">
           <div class="card-body">
-            <h6 class="card-subtitle mb-2 text-muted">Total sin %</h6>
+            <h6 class="card-subtitle mb-2 text-muted">Capital libre</h6>
+            <small class="total-help">Capitales y dinero físico, sin Ahorro ni Bolsillos</small>
             <h5 class="card-title clickable breakdown-trigger" id="total-sin-p">COP 0,00</h5>
           </div>
         </div>
@@ -684,7 +156,8 @@ ul::-webkit-scrollbar-thumb {
       <div class="col-md-4 mb-3">
         <div class="card shadow-sm">
           <div class="card-body">
-            <h6 class="card-subtitle mb-2 text-muted">Total Deseado</h6>
+            <h6 class="card-subtitle mb-2 text-muted">Patrimonio neto</h6>
+            <small class="total-help">Capital libre + Ahorro + por cobrar − por pagar</small>
             <h5 class="card-title" id="total-deseado">COP 0,00</h5>
           </div>
         </div>
@@ -692,7 +165,8 @@ ul::-webkit-scrollbar-thumb {
       <div class="col-md-4 mb-3">
         <div class="card shadow-sm">
           <div class="card-body">
-            <h6 class="card-subtitle mb-2 text-muted">Total Real</h6>
+            <h6 class="card-subtitle mb-2 text-muted">Patrimonio total</h6>
+            <small class="total-help">Incluye Bolsillos sin duplicar saldos sincronizados</small>
             <h5 class="card-title" id="total-real">COP 0,00</h5>
           </div>
         </div>
@@ -706,69 +180,135 @@ ul::-webkit-scrollbar-thumb {
     <!-- Botón Ver Historial -->
     <div class="text-center">
       <button
-        class="btn btn-outline-info btn-lg"
+        class="btn btn-history"
         data-bs-toggle="modal"
         data-bs-target="#modalHistory"
       >
         <i class="bi bi-clock-history"></i> Ver Historial
       </button>
     </div>
+
+    <!-- Gráficos / Estado financiero -->
+    <section id="financial-dashboard" class="finance-dashboard mb-5">
+      <div class="finance-dashboard-head">
+        <div>
+          <small>ANÁLISIS FINANCIERO</small>
+          <h4><i class="bi bi-graph-up-arrow"></i> Progreso económico</h4>
+          <p>Patrimonio, flujo, ahorro, metas y deudas con filtros de periodo en tiempo real.</p>
+        </div>
+        <div class="finance-dashboard-controls finance-dashboard-controls-v2">
+          <label class="finance-control"><span>Periodo</span><select id="finance-period"><option value="today">Hoy</option><option value="month" selected>Este mes</option><option value="2m">Últimos 2 meses</option><option value="3m">Últimos 3 meses</option><option value="6m">Últimos 6 meses</option><option value="12m">Últimos 12 meses</option><option value="year">Este año</option><option value="2y">Últimos 2 años</option><option value="3y">Últimos 3 años</option><option value="all">Todo</option><option value="custom">Personalizado</option></select></label>
+          <label class="finance-control"><span>Hasta</span><input id="finance-month" type="month"></label>
+          <div id="finance-custom-range" class="finance-custom-range" hidden>
+            <label class="finance-control"><span>Desde</span><input id="finance-from" type="date"></label>
+            <label class="finance-control"><span>Hasta</span><input id="finance-to" type="date"></label>
+          </div>
+        </div>
+      </div>
+
+      <article id="financial-state" class="financial-state-card"></article>
+
+      <div class="finance-charts-grid">
+        <article class="finance-chart-card wide">
+          <div class="finance-chart-head"><div><small>PATRIMONIO</small><h5>Evolución patrimonial</h5><p>Estimación histórica sin duplicar bolsillos sincronizados.</p></div><div id="patrimony-current" class="finance-chart-value"></div></div>
+          <div id="chart-patrimony" class="finance-chart"></div>
+        </article>
+
+        <article class="finance-chart-card">
+          <div class="finance-chart-head"><div><small>FLUJO DEL PERIODO</small><h5>Ingresos vs gastos</h5><p>Las transferencias internas no cuentan como ingreso ni gasto.</p></div><div id="cashflow-current" class="finance-chart-value"></div></div>
+          <div id="chart-cashflow" class="finance-chart"></div>
+          <div class="finance-legend"><span class="income"><i></i>Ingresos</span><span class="expense"><i></i>Gastos / salidas</span></div>
+        </article>
+
+        <article class="finance-chart-card">
+          <div class="finance-chart-head"><div><small>AHORRO</small><h5>Ahorro generado</h5><p>Aporte de Ahorro generado por los ingresos registrados.</p></div><div id="saving-current" class="finance-chart-value"></div></div>
+          <div id="chart-saving" class="finance-chart"></div>
+        </article>
+
+        <article class="finance-chart-card">
+          <div class="finance-chart-head"><div><small>COMPROMISOS</small><h5>Dinero reservado</h5><p>Lo que ya separaste dentro de deseos y metas activas.</p></div></div>
+          <div id="chart-commitments" class="finance-chart compact"></div>
+        </article>
+
+        <article class="finance-chart-card">
+          <div class="finance-chart-head"><div><small>METAS</small><h5>Progreso de objetivos</h5><p>Metas activas con precio definido.</p></div><div id="goals-current" class="finance-chart-value"></div></div>
+          <div id="chart-goals" class="finance-chart compact"></div>
+        </article>
+
+        <article class="finance-chart-card wide">
+          <div class="finance-chart-head"><div><small>DEUDAS</small><h5>Obligaciones y dinero por cobrar</h5><p>Situación pendiente actual y cambio frente al cierre anterior.</p></div></div>
+          <div id="chart-debts" class="finance-chart compact"></div>
+        </article>
+      </div>
+    </section>
   </div>
 
   <!-- Modal: Historial -->
-  <div class="modal fade" id="modalHistory" tabindex="-1">
-    <div class="modal-dialog modal-xl modal-dialog-scrollable">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Historial de Movimientos</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+  <div class="modal fade" id="modalHistory" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-scrollable history-modal-dialog">
+      <div class="modal-content history-modal-content">
+        <div class="history-modal-header">
+          <div>
+            <small>ACTIVIDAD FINANCIERA</small>
+            <h5>Historial</h5>
+            <p>Consulta movimientos por módulo, bloque, tipo y fecha.</p>
+          </div>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
         </div>
-        <div class="modal-body">
-          <div class="row g-2 mb-3">
-            <div class="col-auto">
-              <input
-                type="date"
-                id="filter-from"
-                class="form-control form-control-sm"
-                placeholder="Desde"
-              />
+
+        <div class="history-toolbar">
+          <div class="history-search-wrap">
+            <i class="bi bi-search"></i>
+            <input type="search" id="history-search" placeholder="Buscar persona, capital, bolsillo, deseo, concepto..." autocomplete="off" />
+          </div>
+
+          <div class="history-module-tabs" aria-label="Filtrar por módulo">
+            <button type="button" data-history-module="all" class="active">Todo</button>
+            <button type="button" data-history-module="capital"><span>💳</span> Capital</button>
+            <button type="button" data-history-module="pockets"><span>🐷</span> Bolsillos</button>
+            <button type="button" data-history-module="debts"><span>🤝</span> Deudas</button>
+          </div>
+
+          <div class="history-filter-row">
+            <label>
+              <span>Objeto</span>
+              <select id="history-filter-object"><option value="all">Todos los objetos</option></select>
+            </label>
+            <label>
+              <span>Tipo</span>
+              <select id="history-filter-action"><option value="all">Todos los tipos</option></select>
+            </label>
+            <button type="button" id="history-reset" class="history-reset"><i class="bi bi-arrow-counterclockwise"></i> Limpiar</button>
+          </div>
+
+          <div class="history-range-row">
+            <div class="history-range-tabs">
+              <button type="button" data-history-range="today">Hoy</button>
+              <button type="button" data-history-range="7d">7 días</button>
+              <button type="button" data-history-range="month" class="active">Este mes</button>
+              <button type="button" data-history-range="prev-month">Mes anterior</button>
+              <button type="button" data-history-range="all">Todo</button>
+              <button type="button" data-history-range="custom"><i class="bi bi-calendar3"></i> Fechas</button>
             </div>
-            <div class="col-auto">
-              <input
-                type="date"
-                id="filter-to"
-                class="form-control form-control-sm"
-                placeholder="Hasta"
-              />
-            </div>
-            <div class="col-auto">
-              <select id="filter-type" class="form-select form-select-sm">
-                <option value="">Todos</option>
-                <option value="resta">Resta</option>
-                <option value="suma">Suma</option>
-                <option value="edicion">Edición</option>
-              </select>
-            </div>
-            <div class="col-auto flex-grow-1">
-              <input
-                type="text"
-                id="filter-text"
-                placeholder="Buscar..."
-                class="form-control form-control-sm"
-              />
-            </div>
-            <div class="col-auto">
-              <button id="filter-apply" class="btn btn-sm btn-primary">
-                <i class="bi bi-funnel-fill"></i> Filtrar
-              </button>
+            <div id="history-custom-dates" class="history-custom-dates">
+              <label>Desde<input type="date" id="history-from" /></label>
+              <label>Hasta<input type="date" id="history-to" /></label>
             </div>
           </div>
-          <ul id="history-list" class="list-group" style="max-height:500px; overflow-y:auto;"></ul>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-            Cerrar
-          </button>
+
+        <div class="history-results-head">
+          <div id="history-result-summary"></div>
+          <small>Ordenado por fecha financiera · más reciente primero</small>
+        </div>
+
+        <div class="modal-body history-modal-body">
+          <div id="history-list" class="history-list"></div>
+        </div>
+
+        <div class="history-modal-footer">
+          <span><i class="bi bi-info-circle"></i> Las fechas corregidas en Deudas se reflejan aquí en su día real.</span>
+          <button type="button" data-bs-dismiss="modal">Cerrar</button>
         </div>
       </div>
     </div>
@@ -803,41 +343,54 @@ ul::-webkit-scrollbar-thumb {
     </div>
   </div>
 
-  <!-- Bootstrap Bundle JS + Popper -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <!-- Toastify JS -->
-  <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
-  <!-- Tu lógica JS (js.js) -->
-  <script src="js.js"></script>
+<!-- Bootstrap -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-  <!-- Script para alternar Tema Claro/Oscuro -->
-  <script>
-    (function () {
-      const toggleBtn = document.getElementById('theme-toggle');
-      const htmlEl = document.documentElement;
-      // Determinar tema inicial (por preferencia del SO o localStorage)
-      const saved = localStorage.getItem('theme');
-      if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-        htmlEl.setAttribute('data-theme', 'dark');
-        toggleBtn.innerHTML = '<i class="bi bi-sun-fill"></i>';
-      } else {
-        htmlEl.setAttribute('data-theme', 'light');
-        toggleBtn.innerHTML = '<i class="bi bi-moon-fill"></i>';
-      }
 
-      toggleBtn.addEventListener('click', () => {
-        const current = htmlEl.getAttribute('data-theme');
-        if (current === 'light') {
-          htmlEl.setAttribute('data-theme', 'dark');
-          toggleBtn.innerHTML = '<i class="bi bi-sun-fill"></i>';
-          localStorage.setItem('theme', 'dark');
-        } else {
-          htmlEl.setAttribute('data-theme', 'light');
-          toggleBtn.innerHTML = '<i class="bi bi-moon-fill"></i>';
-          localStorage.setItem('theme', 'light');
-        }
-      });
-    })();
-  </script>
+<!-- Toastify -->
+<script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
+
+<!-- Datos primero -->
+<script src="./js/data.js"></script>
+
+
+<!-- Motor de temas -->
+<script src="./css/themes.js"></script>
+
+<script src="./css/theme.js"></script>
+
+<script src="./css/themeMenu.js"></script>
+
+
+<!-- Inicializar tema -->
+<script>
+    FELIOS_THEME.load();
+</script>
+
+
+<!-- Aplicación -->
+<script src="./js/core.js"></script>
+
+<script src="./js/accounts.js"></script>
+
+<script src="./js/debts.js"></script>
+
+<script src="./js/totals.js"></script>
+
+<script src="./js/pockets.js"></script>
+<script src="./js/sync.js"></script>
+
+<script src="./js/history.js"></script>
+<script src="./js/graphs.js"></script>
+<script src="./js/graphs-v2.js"></script>
+
+<script src="./js/felios.js"></script>
+
+<script src="./js/memory.js"></script>
+
+<script src="./js/other.js"></script>
+<script src="./js/final-polish.js"></script>
+
 </body>
 </html>
